@@ -1,4 +1,4 @@
-# cloudscribe SimpleContent Samples - simpleauthnodb
+# Using SimpleContent with Simple Auth and NoDb
 
 This sample uses [cloudscribe SimpleAuth](https://github.com/joeaudette/cloudscribe.Web.SimpleAuth) which is best suited for projects where only one or a few people need to be able to login. Users are pre-configured in the app-tenant-users.json file, and project settings are configured in the app-content-settings.json file. The sample uses NuGet packages for cloudscribe SimpleContent and cloudscribe SimpleAuth but has some integration code within the WebApp project to implement mutliple tenants. A good way to setup your own site is to use this sample. You can publish it from Visual Studio as it is or you can customize it by adding your own code and/or projects.
 
