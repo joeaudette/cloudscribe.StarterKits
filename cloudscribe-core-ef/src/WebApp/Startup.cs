@@ -4,15 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using System.Globalization;
-using cloudscribe.SimpleContent.Models;
-using Microsoft.AspNetCore.Mvc;
-using cloudscribe.Core.SimpleContent.Integration;
-using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.DataProtection;
 
 namespace WebApp
@@ -25,9 +25,16 @@ namespace WebApp
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddJsonFile("appsettings.local.overrides.json", optional: true)
-                .AddEnvironmentVariables();
+                .AddJsonFile("appsettings.local.overrides.json", optional: true);
 
+
+            if (env.IsDevelopment())
+            {
+                // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
+                builder.AddUserSecrets();
+            }
+
+            builder.AddEnvironmentVariables();
             Configuration = builder.Build();
 
             appBasePath = env.ContentRootPath;
@@ -36,6 +43,7 @@ namespace WebApp
 
         private string appBasePath;
         public IHostingEnvironment environment { get; set; }
+
         public IConfigurationRoot Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -59,32 +67,18 @@ namespace WebApp
 
             services.AddOptions();
 
-            services.AddCloudscribeCoreNoDbStorage();
-            services.AddCloudscribeLoggingNoDbStorage(Configuration);
-            services.AddNoDbStorageForSimpleContent();
+            var connectionString = Configuration.GetConnectionString("EntityFrameworkConnection");
+            services.AddCloudscribeCoreEFStorage(connectionString);
 
-
-            services.AddCloudscribeLogging();
-
+            // only needed if using cloudscribe logging with EF storage
+            services.AddCloudscribeLoggingEFStorage(connectionString);
             
-            services.AddScoped<cloudscribe.Web.Navigation.INavigationNodePermissionResolver, cloudscribe.Web.Navigation.NavigationNodePermissionResolver>();
-            services.AddScoped<cloudscribe.Web.Navigation.INavigationNodePermissionResolver, cloudscribe.SimpleContent.Web.Services.PagesNavigationNodePermissionResolver>();
+            services.AddCloudscribeLogging();
+            
             services.AddCloudscribeCore(Configuration);
 
             services.AddCloudscribeIdentity();
-
             
-            services.AddScoped<IProjectSettingsResolver, SiteProjectSettingsResolver>();
-            services.AddScoped<IProjectSecurityResolver, ProjectSecurityResolver>();
-
-
-            services.AddCloudscribeCoreIntegrationForSimpleContent();
-            services.AddSimpleContent(Configuration);
-
-            services.AddMetaWeblogForSimpleContent(Configuration.GetSection("MetaWeblogApiOptions"));
-
-            services.AddSimpleContentRssSyndiction();
-
             services.AddLocalization(options => options.ResourcesPath = "GlobalResources");
 
             services.Configure<RequestLocalizationOptions>(options =>
@@ -128,19 +122,8 @@ namespace WebApp
                 //  {
                 options.Filters.Add(new RequireHttpsAttribute());
                 //   }
-
-
-                options.CacheProfiles.Add("SiteMapCacheProfile",
-                     new CacheProfile
-                     {
-                         Duration = 30
-                     });
-
-                options.CacheProfiles.Add("RssCacheProfile",
-                     new CacheProfile
-                     {
-                         Duration = 100
-                     });
+                
+                
             });
 
             services.AddMvc()
@@ -151,15 +134,15 @@ namespace WebApp
                     options.AddEmbeddedViewsForNavigation();
                     options.AddEmbeddedViewsForCloudscribeCore();
                     options.AddEmbeddedViewsForCloudscribeLogging();
-                    options.AddEmbeddedViewsForSimpleContent();
-                    options.AddEmbeddedViewsForCloudscribeCoreSimpleContentIntegration();
-
+                    
                     options.ViewLocationExpanders.Add(new cloudscribe.Core.Web.Components.SiteViewLocationExpander());
                 })
                     ;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        // you can add things to this method signature and they will be injected as long as they were registered during 
+        // ConfigureServices
         public void Configure(
             IApplicationBuilder app,
             IHostingEnvironment env,
@@ -215,22 +198,23 @@ namespace WebApp
             });
 
             UseMvc(app, multiTenantOptions.Mode == cloudscribe.Core.Models.MultiTenantMode.FolderName);
+
+            var storage = Configuration["DevOptions:DbPlatform"];
+
+            // this creates ensures the database is created and initial data
+            CoreEFStartup.InitializeDatabaseAsync(app.ApplicationServices).Wait();
+
+            // this one is only needed if using cloudscribe Logging with EF as the logging storage
+            LoggingEFStartup.InitializeDatabaseAsync(app.ApplicationServices).Wait();
+
             
-            CoreNoDbStartup.InitializeDataAsync(app.ApplicationServices).Wait();
-              
+
         }
 
         private void UseMvc(IApplicationBuilder app, bool useFolders)
         {
             app.UseMvc(routes =>
-            {
-                if (useFolders)
-                {
-                    routes.AddBlogRoutesForSimpleContent(new cloudscribe.Core.Web.Components.SiteFolderRouteConstraint());
-                }
-
-                routes.AddBlogRoutesForSimpleContent();
-
+            {  
                 if (useFolders)
                 {
                     routes.MapRoute(
@@ -240,7 +224,6 @@ namespace WebApp
                         constraints: new { name = new cloudscribe.Core.Web.Components.SiteFolderRouteConstraint() }
                         );
 
-                    routes.AddDefaultPageRouteForSimpleContent(new cloudscribe.Core.Web.Components.SiteFolderRouteConstraint());
                 }
 
                 routes.MapRoute(
@@ -249,11 +232,11 @@ namespace WebApp
                     );
 
                 routes.MapRoute(
-                    name: "def",
-                    template: "{controller}/{action}"
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}"
                     );
 
-                routes.AddDefaultPageRouteForSimpleContent();
+
 
             });
         }
@@ -265,28 +248,8 @@ namespace WebApp
             services.AddAuthorization(options =>
             {
                 options.AddCloudscribeCoreDefaultPolicies();
-
                 options.AddCloudscribeLoggingDefaultPolicy();
-
-                options.AddCloudscribeCoreSimpleContentIntegrationDefaultPolicies();
-
-                // this is what the above extension adds
-                //options.AddPolicy(
-                //    "BlogEditPolicy",
-                //    authBuilder =>
-                //    {
-                //        //authBuilder.RequireClaim("blogId");
-                //        authBuilder.RequireRole("Administrators");
-                //    }
-                // );
-
-                //options.AddPolicy(
-                //    "PageEditPolicy",
-                //    authBuilder =>
-                //    {
-                //        authBuilder.RequireRole("Administrators");
-                //    });
-
+                
                 // add other policies here 
 
             });
@@ -335,5 +298,6 @@ namespace WebApp
 
             loggerFactory.AddDbLogger(serviceProvider, logFilter, logRepo);
         }
+
     }
 }
