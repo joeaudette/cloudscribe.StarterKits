@@ -21,16 +21,10 @@ namespace WebApp
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
-
-            builder.AddJsonFile("app-tenants-users.json");
-            builder.AddJsonFile("app-content-project-settings.json");
-            // this file name is ignored by gitignore
-            // so you can create it and use on your local dev machine
-            // remember last config source added wins if it has the same settings
-            builder.AddJsonFile("appsettings.local.overrides.json", optional: true);
-            builder.AddEnvironmentVariables();
-
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddJsonFile("simpleauth-settings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile("simplecontent-settings.json", optional: true, reloadOnChange: true)
+                .AddEnvironmentVariables();
             Configuration = builder.Build();
         }
 
@@ -45,33 +39,34 @@ namespace WebApp
 
             ConfigureAuthPolicy(services);
 
+            
+            // add users and settings from simpleauth-settings.json
             services.Configure<cloudscribe.Web.SimpleAuth.Models.SimpleAuthSettings>(Configuration.GetSection("SimpleAuthSettings"));
-            services.Configure<MultiTenancyOptions>(Configuration.GetSection("MultiTenancy"));
+            services.Configure<List<cloudscribe.Web.SimpleAuth.Models.SimpleAuthUser>>(Configuration.GetSection("Users"));
 
-            services.AddMultitenancy<SiteSettings, CachingSiteResolver>();
-            services.AddScoped<cloudscribe.Web.SimpleAuth.Models.IUserLookupProvider, SiteUserLookupProvider>();
-            services.AddScoped<cloudscribe.Web.SimpleAuth.Models.IAuthSettingsResolver, SiteAuthSettingsResolver>();
             services.AddCloudscribeSimpleAuth();
 
             services.AddScoped<cloudscribe.SimpleContent.Models.IProjectQueries, cloudscribe.SimpleContent.Storage.NoDb.ConfigProjectQueries>();
             services.AddNoDbStorageForSimpleContent();
 
             services.AddCloudscribeNavigation(Configuration.GetSection("NavigationOptions"));
+            //add content project settings from simplecontent-settings.json
             services.Configure<List<ProjectSettings>>(Configuration.GetSection("ContentProjects"));
-            services.AddScoped<IProjectSettingsResolver, SiteProjectSettingsResolver>();
+
+            // this implementation of IProjectSecurityResolver provides integration with SimpleAuth
+            // to use a different authentication system you would implement and plugin your own IProjectSecurityResolver
             services.AddScoped<IProjectSecurityResolver, cloudscribe.SimpleContent.Security.SimpleAuth.ProjectSecurityResolver>();
+
             services.AddCloudscribeCommmon();
             services.AddSimpleContent();
 
             services.AddMetaWeblogForSimpleContent(Configuration.GetSection("MetaWeblogApiOptions"));
 
             services.AddSimpleContentRssSyndiction();
-
-
+            
             // Add MVC services to the services container.
             services.Configure<MvcOptions>(options =>
             {
-                // options.InputFormatters.Add(new Xm)
                 options.CacheProfiles.Add("SiteMapCacheProfile",
                      new CacheProfile
                      {
@@ -99,16 +94,14 @@ namespace WebApp
                     // If you download and install the views below your view folder you don't need this method and you can customize the views.
                     // You can get the views from https://github.com/joeaudette/cloudscribe.SimpleContent/tree/master/src/cloudscribe.SimpleContent.Blog.Web/Views
                     options.AddEmbeddedViewsForSimpleContent();
-
-
-                    options.ViewLocationExpanders.Add(new SiteViewLocationExpander());
+                    
                 });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(
-            IApplicationBuilder app, 
-            IHostingEnvironment env, 
+            IApplicationBuilder app,
+            IHostingEnvironment env,
             ILoggerFactory loggerFactory,
             IOptions<cloudscribe.Web.SimpleAuth.Models.SimpleAuthSettings> authSettingsAccessor
             )
@@ -128,33 +121,39 @@ namespace WebApp
 
             app.UseStaticFiles();
 
-            app.UseMultitenancy<SiteSettings>();
+            // custom 404 and error page - this preserves the status code (ie 404)
+            app.UseStatusCodePagesWithReExecute("/Home/Error/{0}");
+            
+            // this is the cookie auth setup needed for SimpleAuth
+            // if you want to integrate with an existing app that already has
+            // some authentication implemented then you can remove this and
+            // plugin your own custom IProjectSecurityResolver by DI
+            var authCookieOptions = new CookieAuthenticationOptions();
+            authCookieOptions.AuthenticationScheme = "application";
+            authCookieOptions.LoginPath = new PathString("/login");
+            authCookieOptions.AccessDeniedPath = new PathString("/");
+            authCookieOptions.AutomaticAuthenticate = true;
+            authCookieOptions.AutomaticChallenge = true;
+            authCookieOptions.CookieName = "application";
+            app.UseCookieAuthentication(authCookieOptions);
 
-            app.UsePerTenant<SiteSettings>((ctx, builder) =>
-            {
-                var authCookieOptions = new CookieAuthenticationOptions();
-                authCookieOptions.AuthenticationScheme = ctx.Tenant.AuthenticationScheme;
-                authCookieOptions.LoginPath = new PathString("/login");
-                authCookieOptions.AccessDeniedPath = new PathString("/");
-                authCookieOptions.AutomaticAuthenticate = true;
-                authCookieOptions.AutomaticChallenge = true;
-                authCookieOptions.CookieName = ctx.Tenant.AuthenticationScheme;
-                builder.UseCookieAuthentication(authCookieOptions);
-
-            });
+            
 
             app.UseMvc(routes =>
             {
                 routes.AddStandardRoutesForSimpleContent();
+                // the Pages feature routes by default would take over as the defualt route
+                // if you only want the blog then comment out the line above and use:
+                //routes.AddBlogRoutesForSimpleContent();
+                // then you will see the standard home controller becomes the home page
+                // instead of the pages feature - to use that you would also want to edit
+                // the navigation.xml file to remove the pages feature treebuilder reference 
+                // and add the other actions of the home controller into the menu
 
+                // this route is not really the default route unless you change the above
                 routes.MapRoute(
-                    name: "def",
-                    template: "{controller}/{action}"
-                    );
-
-                //routes.MapRoute(
-                //    name: "default",
-                //    template: "{controller=Home}/{action=Index}/{id?}");
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
 
@@ -170,21 +169,22 @@ namespace WebApp
                     "BlogEditPolicy",
                     authBuilder =>
                     {
-                        authBuilder.RequireClaim("blogId");
+                        authBuilder.RequireRole("Administrators");
                     }
                  );
-				 
-				 options.AddPolicy(
-                    "PageEditPolicy",
-                    authBuilder =>
-                    {
-                        authBuilder.RequireRole("Administrators");
-                    });
+
+                options.AddPolicy(
+                   "PageEditPolicy",
+                   authBuilder =>
+                   {
+                       authBuilder.RequireRole("Administrators");
+                   });
 
                 // add other policies here 
 
             });
 
         }
+
     }
 }

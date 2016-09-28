@@ -1,10 +1,10 @@
-﻿@inject SiteSettings Tenant
+﻿@using cloudscribe.Web.Navigation
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>@ViewData["Title"] - @(Tenant?.SiteName ?? "Sample")</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebApp</title>
     @RenderSection("Meta", required: false)
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -28,7 +28,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="~/@(Tenant?.SiteFolderName ?? "")" class="navbar-brand">@(Tenant?.SiteName ?? "Sample")</a>
+                <a href="/" class="navbar-brand">WebApp</a>
             </div>
             <div class="navbar-collapse collapse">
                 @await Component.InvokeAsync("Navigation", new { viewName = "BootstrapTopNav", filterName = NamedNavigationFilters.TopNav, startingNodeKey = "" })
@@ -41,11 +41,11 @@
         @await Component.InvokeAsync("Navigation", new { viewName = "BootstrapBreadcrumbs", filterName = NamedNavigationFilters.Breadcrumbs, startingNodeKey = "" })
         @RenderBody()
         <hr />
-        <footer class="container text-center" role="contentinfo" itemscope itemtype="http://schema.org/Person" itemprop="author">
-            <small>Copyright &copy; @DateTime.Now.Year - @(Tenant?.SiteName ?? "Sample")</small>
+        <footer>
+            <p>&copy; 2016 - WebApp</p>
         </footer>
     </div>
-    @RenderSection("Bottom", required: false)
+
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
@@ -63,6 +63,7 @@
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
 
+    @RenderSection("Bottom", required: false)
     @RenderSection("scripts", required: false)
 </body>
 </html>

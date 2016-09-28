@@ -1,26 +1,26 @@
 ﻿{
     "dependencies": {
         "Microsoft.NETCore.App": {
-            "version": "1.0.0",
+            "version": "1.0.1",
             "type": "platform"
         },
-        "Microsoft.AspNetCore.Diagnostics": "1.0.*",
-        "Microsoft.AspNetCore.Mvc": "1.0.*",
+        "Microsoft.AspNetCore.Diagnostics": "1.0.0",
+        "Microsoft.AspNetCore.Mvc": "1.0.1",
         "Microsoft.AspNetCore.Razor.Tools": {
             "version": "1.0.0-preview2-final",
             "type": "build"
         },
-        "Microsoft.AspNetCore.Server.IISIntegration": "1.0.*",
-        "Microsoft.AspNetCore.Server.Kestrel": "1.0.*",
-        "Microsoft.AspNetCore.StaticFiles": "1.0.*",
-        "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.*",
-        "Microsoft.Extensions.Configuration.Json": "1.0.*",
-        "Microsoft.Extensions.Logging": "1.0.*",
-        "Microsoft.Extensions.Logging.Console": "1.0.*",
-        "Microsoft.Extensions.Logging.Debug": "1.0.*",
-        "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.*",
+        "Microsoft.AspNetCore.Routing": "1.0.1",
+        "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
+        "Microsoft.AspNetCore.Server.Kestrel": "1.0.1",
+        "Microsoft.AspNetCore.StaticFiles": "1.0.0",
+        "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0",
+        "Microsoft.Extensions.Configuration.Json": "1.0.0",
+        "Microsoft.Extensions.Logging": "1.0.0",
+        "Microsoft.Extensions.Logging.Console": "1.0.0",
+        "Microsoft.Extensions.Logging.Debug": "1.0.0",
+        "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
         "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
-        "SaasKit.Multitenancy": "1.1.*",
         "cloudscribe.Web.Navigation": "1.0.2-*",
         "cloudscribe.Web.Pagination": "1.0.*",
         "cloudscribe.Web.SimpleAuth": "1.0.2-*",
@@ -32,7 +32,9 @@
         "cloudscribe.SimpleContent.Syndication": "1.0.0-*",
         "cloudscribe.Syndication.Web": "1.0.1-*",
         "Microsoft.Extensions.Options": "1.0.*",
-        "Microsoft.Extensions.Configuration": "1.0.*"
+        "Microsoft.Extensions.Configuration": "1.0.*",
+        "Microsoft.AspNetCore.Diagnostics.Abstractions": "1.0.0",
+        "Microsoft.Extensions.Logging.Abstractions": "1.0.0"
     },
 
   "tools": {
@@ -63,16 +65,13 @@
 
   "publishOptions": {
     "include": [
-      "wwwroot",
-      "Views",
-	  "nodb_storage",
-	  "Themes",
-      "Areas/**/Views",
-      "appsettings.json",
-	  "app-content-project-settings.json",
-	  "app-tenants-users.json",
-	  "navigation.xml",
-      "web.config"
+        "wwwroot",
+        "**/*.cshtml",
+        "appsettings.json",
+        "simpleauth-settings.json",
+        "simplecontent-settings.json",
+        "navigation.xml",
+        "web.config"
     ]
   },
 
