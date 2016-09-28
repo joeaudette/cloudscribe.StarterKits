@@ -1,10 +1,10 @@
 # Using SimpleContent with Simple Auth and NoDb
 
-This sample uses [cloudscribe SimpleAuth](https://github.com/joeaudette/cloudscribe.Web.SimpleAuth) which is best suited for projects where only one or a few people need to be able to login. Users are pre-configured in the app-tenant-users.json file, and project settings are configured in the app-content-settings.json file. The sample uses NuGet packages for cloudscribe SimpleContent and cloudscribe SimpleAuth. A good way to setup your own site is to use this sample. You can publish it from Visual Studio as it is or you can customize it by adding your own code and/or projects.
+This sample uses [cloudscribe SimpleAuth](https://github.com/joeaudette/cloudscribe.Web.SimpleAuth) which is best suited for projects where only one or a few people need to be able to login. Users are pre-configured in the simpleauth-settings.json file, and project settings are configured in the simplecontent-settings.json file. The sample uses NuGet packages for cloudscribe SimpleContent and cloudscribe SimpleAuth. A good way to setup your own site is to use this sample. You can publish it from Visual Studio as it is or you can customize it by adding your own code and/or projects.
 
 This sample uses [NoDb](https://github.com/joeaudette/NoDb) file system storage for content and data. NoDb is a "No Database" file system storage, it is also a "NoSql" storage system.
 
-You can login to the sample data with admin as the username and admin as the password
+You can login to the sample with admin as the username and admin as the password
 
 Be sure to update the credentials in the simpleauth-settings.json file before deployment.
 
