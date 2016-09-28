@@ -4,7 +4,9 @@ All of these samples are intended as something you could copy and use to start y
 
 For guidance on building applications with cloudscribe, [see this wiki article](https://github.com/joeaudette/cloudscribe.StarterKits/wiki/Building-Web-Apps-with-cloudscribe)
 
-## [SimpleContent with SimpleAuth and NoDb](https://github.com/joeaudette/cloudscribe.StarterKits/tree/master/SimpleContent-SimpleAuth-nodb)
+## [SimpleContent with SimpleAuth and NoDb - Single Tenant](https://github.com/joeaudette/cloudscribe.StarterKits/tree/master/SimpleContent-SimpleAuth-nodb)
+
+## [SimpleContent with SimpleAuth and NoDb - Multi-Tenant](https://github.com/joeaudette/cloudscribe.StarterKits/tree/master/SimpleContent-SimpleAuth-nodb-multitenant)
 
 ## [SimpleContent with cloudscribe Core and NoDb](https://github.com/joeaudette/cloudscribe.StarterKits/tree/master/SimpleContent-cloudscribecore-nodb)
 
