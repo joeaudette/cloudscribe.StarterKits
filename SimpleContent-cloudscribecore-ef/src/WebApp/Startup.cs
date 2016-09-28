@@ -79,23 +79,12 @@ namespace WebApp
             services.AddCloudscribeLoggingEFStorage(connectionString);
 
             services.AddCloudscribeSimpleContentEFStorage(connectionString);
-
-
+            
             services.AddCloudscribeLogging();
-
-            services.AddScoped<cloudscribe.Web.Navigation.Caching.ITreeCache, cloudscribe.Web.Navigation.Caching.NotCachedTreeCache>();
-
-
+            
             services.AddScoped<cloudscribe.Web.Navigation.INavigationNodePermissionResolver, cloudscribe.Web.Navigation.NavigationNodePermissionResolver>();
             services.AddScoped<cloudscribe.Web.Navigation.INavigationNodePermissionResolver, cloudscribe.SimpleContent.Web.Services.PagesNavigationNodePermissionResolver>();
             services.AddCloudscribeCore(Configuration);
-
-            services.AddCloudscribeIdentity();
-
-            services.AddScoped<IProjectSettingsResolver, SiteProjectSettingsResolver>();
-            services.AddScoped<IProjectSecurityResolver, ProjectSecurityResolver>();
-
-
             services.AddCloudscribeCoreIntegrationForSimpleContent();
             services.AddSimpleContent(Configuration);
 
@@ -218,18 +207,10 @@ namespace WebApp
 
             app.UsePerTenant<cloudscribe.Core.Models.SiteSettings>((ctx, builder) =>
             {
-                var tenant = ctx.Tenant;
-
-                var shouldUseFolder = !multiTenantOptions.UseRelatedSitesMode
-                                        && multiTenantOptions.Mode == cloudscribe.Core.Models.MultiTenantMode.FolderName
-                                        && tenant.SiteFolderName.Length > 0;
-
                 builder.UseCloudscribeCoreDefaultAuthentication(
                     loggerFactory,
-                    multiTenantOptions.UseRelatedSitesMode,
-                    shouldUseFolder,
-                    tenant);
-
+                    multiTenantOptions,
+                    ctx.Tenant);
             });
 
             UseMvc(app, multiTenantOptions.Mode == cloudscribe.Core.Models.MultiTenantMode.FolderName);

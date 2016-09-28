@@ -61,8 +61,7 @@ namespace WebApp
             services.AddCloudscribeLoggingNoDbStorage(Configuration);
             services.AddCloudscribeLogging();
             services.AddCloudscribeCore(Configuration);
-            services.AddCloudscribeIdentity();
-            
+           
             services.AddLocalization(options => options.ResourcesPath = "GlobalResources");
 
             services.Configure<RequestLocalizationOptions>(options =>
@@ -167,18 +166,10 @@ namespace WebApp
 
             app.UsePerTenant<cloudscribe.Core.Models.SiteSettings>((ctx, builder) =>
             {
-                var tenant = ctx.Tenant;
-
-                var shouldUseFolder = !multiTenantOptions.UseRelatedSitesMode
-                                        && multiTenantOptions.Mode == cloudscribe.Core.Models.MultiTenantMode.FolderName
-                                        && tenant.SiteFolderName.Length > 0;
-
                 builder.UseCloudscribeCoreDefaultAuthentication(
                     loggerFactory,
-                    multiTenantOptions.UseRelatedSitesMode,
-                    shouldUseFolder,
-                    tenant);
-
+                    multiTenantOptions,
+                    ctx.Tenant);
             });
 
             UseMvc(app, multiTenantOptions.Mode == cloudscribe.Core.Models.MultiTenantMode.FolderName);
