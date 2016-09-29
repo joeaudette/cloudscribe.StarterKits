@@ -150,6 +150,12 @@ namespace WebApp
                 // the navigation.xml file to remove the pages feature treebuilder reference 
                 // and add the other actions of the home controller into the menu
 
+                // this route is needed for the SimpleAuth /Login
+                routes.MapRoute(
+                    name: "def",
+                    template: "{controller}/{action}"
+                    );
+
                 // this route is not really the default route unless you change the above
                 routes.MapRoute(
                     name: "default",
