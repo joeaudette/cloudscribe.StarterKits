@@ -184,11 +184,11 @@ namespace WebApp
 
             app.UseRequestLocalization(localizationOptionsAccessor.Value);
 
-            app.UseMultitenancy<cloudscribe.Core.Models.SiteSettings>();
+            app.UseMultitenancy<cloudscribe.Core.Models.SiteContext>();
 
             var multiTenantOptions = multiTenantOptionsAccessor.Value;
 
-            app.UsePerTenant<cloudscribe.Core.Models.SiteSettings>((ctx, builder) =>
+            app.UsePerTenant<cloudscribe.Core.Models.SiteContext>((ctx, builder) =>
             {
                 builder.UseCloudscribeCoreDefaultAuthentication(
                     loggerFactory,
