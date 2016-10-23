@@ -66,7 +66,7 @@ namespace OPServer
             //var cert = new X509Certificate2(Path.Combine(environment.ContentRootPath, "yourcustomcert.pfx"), "");
             services.AddIdentityServer()
                         .AddCloudscribeCoreNoDbIdentityServerStorage()
-                        .AddCloudscribeIdentityServerIntegration<cloudscribe.Core.Models.SiteUser>()
+                        .AddCloudscribeIdentityServerIntegration()
                         // https://identityserver4.readthedocs.io/en/dev/topics/crypto.html
                         //.SetSigningCredential(cert) // create a certificate for use in production
                         .SetTemporarySigningCredential() // don't use this for production
@@ -109,14 +109,15 @@ namespace OPServer
                 //}));
             });
 
-            services.Configure<MvcOptions>(options =>
-            {
-                //  if(environment.IsProduction())
-                //  {
-                options.Filters.Add(new RequireHttpsAttribute());
-                //   }
+            // for production be sure to use ssl
+            //services.Configure<MvcOptions>(options =>
+            //{
+            //    if (environment.IsProduction())
+            //    {
+            //        options.Filters.Add(new RequireHttpsAttribute());
+            //    }
 
-            });
+            //});
 
             services.AddMvc()
                 .AddRazorOptions(options =>
@@ -197,16 +198,16 @@ namespace OPServer
                 // ie apis that are hosted in the same web app endpoint with the authority server
                 // this is not needed here if you are only using separate api endpoints
                 // it is needed in the startup of those separate endpoints
-                app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
-                {
-                    Authority = "https://localhost:44399",
-                    // using the site aliasid as the scope so each tenant has a different scope
-                    // you can view the aliasid from site settings
-                    // clients must be configured with the scope to have access to the apis for the tenant
-                    ScopeName = ctx.Tenant.AliasId,
+                //builder.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
+                //{
+                //    Authority = "https://localhost:5000",
+                //    // using the site aliasid as the scope so each tenant has a different scope
+                //    // you can view the aliasid from site settings
+                //    // clients must be configured with the scope to have access to the apis for the tenant
+                //    ScopeName = ctx.Tenant.AliasId,
 
-                    RequireHttpsMetadata = true
-                });
+                //    RequireHttpsMetadata = false
+                //});
 
             });
 

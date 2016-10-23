@@ -12,8 +12,11 @@ namespace Tenant1JsClient
     {
         public static void Main(string[] args)
         {
+            Console.Title = "Tenant1 JsClient";
+
             var host = new WebHostBuilder()
                 .UseKestrel()
+                .UseUrls("http://localhost:5003")
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()

@@ -12,8 +12,11 @@ namespace Tenant1Api
     {
         public static void Main(string[] args)
         {
+            Console.Title = "Tenant1 API";
+
             var host = new WebHostBuilder()
                 .UseKestrel()
+                .UseUrls("http://localhost:5001")
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
