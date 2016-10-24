@@ -40,6 +40,17 @@ namespace OPServer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // https://docs.asp.net/en/latest/security/data-protection/configuration/overview.html
+            // the data protection keys are used for encrypting the auth cookie
+            // they are normally stored on a keyring for the OS but you can control where they are stored
+            // we use dataprotection to encrypt some content in the database specifically
+            // the client secrets for social auth, and smtp password
+            // since you can't decrypt that stuff without the keys you typically need to control
+            // the keys if the site may need to be moved from one server to another or used in 
+            // a web farm, so this example code stores them in the file system with the app
+            // it is of paramount importance to keep the keys secure, so apply your own security policy and practices 
+            // in considering how best to manage these keys and where to store them
+            // anyone with access to the keys could forge a cookie with admin credentials and gain control of your app/site
             string pathToCryptoKeys = appBasePath + System.IO.Path.DirectorySeparatorChar + "dp_keys" + System.IO.Path.DirectorySeparatorChar;
             services.AddDataProtection()
                 .PersistKeysToFileSystem(new System.IO.DirectoryInfo(pathToCryptoKeys));

@@ -32,7 +32,7 @@ namespace Tenant2Api
                 // this defines a CORS policy called "default"
                 options.AddPolicy("default", policy =>
                 {
-                    policy.WithOrigins("http://localhost:5003")
+                    policy.WithOrigins("http://localhost:5005") //Tenant2 JsClient
                         .AllowAnyHeader()
                         .AllowAnyMethod();
                 });
@@ -54,8 +54,8 @@ namespace Tenant2Api
 
             app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
             {
-                Authority = "http://localhost:5000",
-                ScopeName = "tenant1Api",
+                Authority = "http://localhost:5000/two",
+                ScopeName = "tenant2RemoteApi",
 
                 RequireHttpsMetadata = false
             });
