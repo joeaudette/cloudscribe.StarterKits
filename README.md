@@ -16,6 +16,10 @@ For guidance on building applications with cloudscribe, [see this wiki article](
 
 ## [cloudscribe Core and Entity Framework Core](https://github.com/joeaudette/cloudscribe.StarterKits/tree/master/cloudscribe-core-ef)
 
+## [cloudscribe Core, IdentityServer4, and NoDb](https://github.com/joeaudette/cloudscribe.StarterKits/tree/master/cloudscribe-idserver-nodb)
+
+## [cloudscribe Core. IdentityServer4, and Entity Framework Core](https://github.com/joeaudette/cloudscribe.StarterKits/tree/master/cloudscribe-idserver-ef)
+
 
 
 ## Questions or Feedback?
