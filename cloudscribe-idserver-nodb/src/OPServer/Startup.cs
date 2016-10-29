@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -28,11 +29,9 @@ namespace OPServer
 
             Configuration = builder.Build();
 
-            appBasePath = env.ContentRootPath;
             environment = env;
         }
 
-        private string appBasePath;
         public IHostingEnvironment environment { get; set; }
 
         public IConfigurationRoot Configuration { get; }
@@ -51,7 +50,7 @@ namespace OPServer
             // it is of paramount importance to keep the keys secure, so apply your own security policy and practices 
             // in considering how best to manage these keys and where to store them
             // anyone with access to the keys could forge a cookie with admin credentials and gain control of your app/site
-            string pathToCryptoKeys = appBasePath + System.IO.Path.DirectorySeparatorChar + "dp_keys" + System.IO.Path.DirectorySeparatorChar;
+            string pathToCryptoKeys = Path.Combine(environment.ContentRootPath, "dp_keys");
             services.AddDataProtection()
                 .PersistKeysToFileSystem(new System.IO.DirectoryInfo(pathToCryptoKeys));
 
