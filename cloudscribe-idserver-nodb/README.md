@@ -8,7 +8,7 @@ The root level tenant (ie the first tenant which doens't need a folder segment) 
 
 I'm not advocating use of NoDb storage for running an OP Server, but I used it for this sample because it allows me to easily commit pre-populated data for 2 tenants to show off the value of this solution. There are API's and Javascript clients already setup for each of the 2 OP Server tenants. So you can run the projects as describe below and test the functionality and see the code for integrating the APIs and clients.
 
-I will make another sample soon using Entity Framework storage and it would be more recommended to use that sample as a jump start for your own project.
+For production use, I made another [sample using Entity Framework storage](https://github.com/joeaudette/cloudscribe.StarterKits/tree/master/cloudscribe-idserver-ef) and it would be more recommended to use that sample to stand up an OP Server for your own project.
 
 ## Running the samples in this solution
 
