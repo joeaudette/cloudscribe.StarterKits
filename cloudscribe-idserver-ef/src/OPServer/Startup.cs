@@ -77,11 +77,11 @@ namespace OPServer
             services.AddOptions();
 
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
-            services.AddCloudscribeCoreEFStorage(connectionString);
-            services.AddCloudscribeLoggingEFStorage(connectionString);
+            services.AddCloudscribeCoreEFStorageMSSQL(connectionString);
+            services.AddCloudscribeLoggingEFStorageMSSQL(connectionString);
 
             services.AddIdentityServer()
-                .AddCloudscribeCoreEFIdentityServerStorage(connectionString)
+                .AddCloudscribeCoreEFIdentityServerStorageMSSQL(connectionString)
                 .AddCloudscribeIdentityServerIntegration()
                 // https://identityserver4.readthedocs.io/en/dev/topics/crypto.html
                 //.SetSigningCredential(cert) // create a certificate for use in production

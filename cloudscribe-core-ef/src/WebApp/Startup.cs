@@ -67,10 +67,10 @@ namespace WebApp
             services.AddOptions();
 
             var connectionString = Configuration.GetConnectionString("EntityFrameworkConnection");
-            services.AddCloudscribeCoreEFStorage(connectionString);
+            services.AddCloudscribeCoreEFStorageMSSQL(connectionString);
 
             // only needed if using cloudscribe logging with EF storage
-            services.AddCloudscribeLoggingEFStorage(connectionString);
+            services.AddCloudscribeLoggingEFStorageMSSQL(connectionString);
             
             services.AddCloudscribeLogging();
             
