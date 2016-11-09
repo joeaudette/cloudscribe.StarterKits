@@ -70,12 +70,12 @@ namespace WebApp
             services.AddOptions();
 
             var connectionString = Configuration.GetConnectionString("EntityFrameworkConnection");
-            services.AddCloudscribeCoreEFStorage(connectionString);
+            services.AddCloudscribeCoreEFStorageMSSQL(connectionString);
 
             // only needed if using cloudscribe logging with EF storage
-            services.AddCloudscribeLoggingEFStorage(connectionString);
+            services.AddCloudscribeLoggingEFStorageMSSQL(connectionString);
 
-            services.AddCloudscribeSimpleContentEFStorage(connectionString);
+            services.AddCloudscribeSimpleContentEFStorageMSSQL(connectionString);
             
             services.AddCloudscribeLogging();
             
@@ -219,7 +219,7 @@ namespace WebApp
             // this one is only needed if using cloudscribe Logging with EF as the logging storage
             LoggingEFStartup.InitializeDatabaseAsync(app.ApplicationServices).Wait();
 
-            SimpleContentEFStartupExtensions.InitializeDatabaseAsync(app.ApplicationServices).Wait();
+            SimpleContentEFStartup.InitializeDatabaseAsync(app.ApplicationServices).Wait();
             
         }
 
