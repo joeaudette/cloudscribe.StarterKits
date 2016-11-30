@@ -48,9 +48,10 @@ namespace WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            string pathToCryptoKeys = Path.Combine(environment.ContentRootPath, "dp_keys");
+            //string pathToCryptoKeys = Path.Combine(environment.ContentRootPath, "dp_keys");
             services.AddDataProtection()
-                .PersistKeysToFileSystem(new System.IO.DirectoryInfo(pathToCryptoKeys));
+               // .PersistKeysToFileSystem(new System.IO.DirectoryInfo(pathToCryptoKeys))
+                ;
 
             services.Configure<ForwardedHeadersOptions>(options =>
             {
