@@ -224,7 +224,7 @@ namespace OPServer
                 //    // using the site aliasid as the scope so each tenant has a different scope
                 //    // you can view the aliasid from site settings
                 //    // clients must be configured with the scope to have access to the apis for the tenant
-                //    ScopeName = ctx.Tenant.AliasId,
+                //    ApiName = ctx.Tenant.AliasId,
 
                 //    RequireHttpsMetadata = false
                 //});
