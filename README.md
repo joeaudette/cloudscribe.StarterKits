@@ -10,15 +10,27 @@ For guidance on building applications with cloudscribe, [see this wiki article](
 
 ## [SimpleContent with cloudscribe Core and NoDb](https://github.com/joeaudette/cloudscribe.StarterKits/tree/master/SimpleContent-cloudscribecore-nodb)
 
-## [SimpleContent with cloudscribe Core and Entity Framework Core](https://github.com/joeaudette/cloudscribe.StarterKits/tree/master/SimpleContent-cloudscribecore-ef)
+## [SimpleContent with cloudscribe Core and Entity Framework Core - MSSQL](https://github.com/joeaudette/cloudscribe.StarterKits/tree/master/SimpleContent-cloudscribecore-ef)
+
+## [SimpleContent with cloudscribe Core and Entity Framework Core - MySql](https://github.com/joeaudette/cloudscribe.StarterKits/tree/master/SimpleContent-cloudscribecore-ef-mysql)
+
+## [SimpleContent with cloudscribe Core and Entity Framework Core - PostgreSql](https://github.com/joeaudette/cloudscribe.StarterKits/tree/master/SimpleContent-cloudscribecore-ef-pgsql)
 
 ## [cloudscribe Core and NoDb](https://github.com/joeaudette/cloudscribe.StarterKits/tree/master/cloudscribe-core-nodb)
 
-## [cloudscribe Core and Entity Framework Core](https://github.com/joeaudette/cloudscribe.StarterKits/tree/master/cloudscribe-core-ef)
+## [cloudscribe Core and Entity Framework Core - MSSQL](https://github.com/joeaudette/cloudscribe.StarterKits/tree/master/cloudscribe-core-ef)
+
+## [cloudscribe Core and Entity Framework Core - MySql](https://github.com/joeaudette/cloudscribe.StarterKits/tree/master/cloudscribe-core-ef-mysql)
+
+# [cloudscribe Core and Entity Framework Core - PostgreSql](https://github.com/joeaudette/cloudscribe.StarterKits/tree/master/cloudscribe-core-ef-pgsql)
 
 ## [cloudscribe Core, IdentityServer4, and NoDb](https://github.com/joeaudette/cloudscribe.StarterKits/tree/master/cloudscribe-idserver-nodb)
 
-## [cloudscribe Core. IdentityServer4, and Entity Framework Core](https://github.com/joeaudette/cloudscribe.StarterKits/tree/master/cloudscribe-idserver-ef)
+## [cloudscribe Core. IdentityServer4, and Entity Framework Core - MSSQL](https://github.com/joeaudette/cloudscribe.StarterKits/tree/master/cloudscribe-idserver-ef)
+
+## [cloudscribe Core. IdentityServer4, and Entity Framework Core - MySql](https://github.com/joeaudette/cloudscribe.StarterKits/tree/master/cloudscribe-idserver-ef-mysql)
+
+## [cloudscribe Core. IdentityServer4, and Entity Framework Core - PostgreSql](https://github.com/joeaudette/cloudscribe.StarterKits/tree/master/cloudscribe-idserver-ef-pgsql)
 
 
 
