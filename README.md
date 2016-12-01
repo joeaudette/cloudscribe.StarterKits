@@ -22,7 +22,7 @@ For guidance on building applications with cloudscribe, [see this wiki article](
 
 ## [cloudscribe Core and Entity Framework Core - MySql](https://github.com/joeaudette/cloudscribe.StarterKits/tree/master/cloudscribe-core-ef-mysql)
 
-# [cloudscribe Core and Entity Framework Core - PostgreSql](https://github.com/joeaudette/cloudscribe.StarterKits/tree/master/cloudscribe-core-ef-pgsql)
+## [cloudscribe Core and Entity Framework Core - PostgreSql](https://github.com/joeaudette/cloudscribe.StarterKits/tree/master/cloudscribe-core-ef-pgsql)
 
 ## [cloudscribe Core, IdentityServer4, and NoDb](https://github.com/joeaudette/cloudscribe.StarterKits/tree/master/cloudscribe-idserver-nodb)
 
