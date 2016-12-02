@@ -12,7 +12,7 @@ For production use, I made another [sample using Entity Framework storage](https
 
 ## Running the samples in this solution
 
-1. Control/Shift/Right Click the solution folder and choose "Open Command Windo Here"
+1. Control/Shift/Right Click the solution folder and choose "Open Command Window Here"
 2. Run the command: dotnet restore --no-cache
 3. Exit
 4. For each project folder in the solution, Control/Shift/Right click the project folder and choose "Open Command Window Here"
@@ -28,6 +28,7 @@ You can also login directly to the second tenant to manage its data and you will
 Before testing the Js Clients you should probably log out of the OP Server or you could use a different browser, the point is to see that you can login from the Js Client so you don't want to be already logged in when you try it.
 
 The Tenant 1 Js Client is at http://localhost:5005
+The Tenant 1 Html/PolymerJs Client is at http://localhost:5010  (This is a fancier more realsitic client example using polymer web components)
 The Tenant 2 Js Client is at http://localhost:5007
 
 

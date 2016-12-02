@@ -32,7 +32,7 @@ namespace Tenant1Api
                 // this defines a CORS policy called "default"
                 options.AddPolicy("default", policy =>
                 {
-                    policy.WithOrigins("http://localhost:5003")
+                    policy.WithOrigins("http://localhost:5003","http://localhost:5010")
                         .AllowAnyHeader()
                         .AllowAnyMethod();
                 });
