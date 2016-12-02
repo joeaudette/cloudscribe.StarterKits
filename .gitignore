@@ -256,4 +256,5 @@ paket-files/
 **/nodb_storage/projects/default/logitem/**
 **/appsettings.local.overrides.json
 **/wwwroot/lib/**
+**/bower_components/**
 cloudscribe-core-nodb/src/WebApp/nodb_storage/**
