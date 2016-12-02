@@ -28,7 +28,9 @@ You can also login directly to the second tenant to manage its data and you will
 Before testing the Js Clients you should probably log out of the OP Server or you could use a different browser, the point is to see that you can login from the Js Client so you don't want to be already logged in when you try it.
 
 The Tenant 1 Js Client is at http://localhost:5005
+
 The Tenant 1 Html/PolymerJs Client is at http://localhost:5010  (This is a fancier more realsitic client example using polymer web components)
+
 The Tenant 2 Js Client is at http://localhost:5007
 
 
