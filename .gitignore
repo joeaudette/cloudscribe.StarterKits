@@ -258,3 +258,5 @@ paket-files/
 **/wwwroot/lib/**
 **/bower_components/**
 cloudscribe-core-nodb/src/WebApp/nodb_storage/**
+**/userlocation/**
+

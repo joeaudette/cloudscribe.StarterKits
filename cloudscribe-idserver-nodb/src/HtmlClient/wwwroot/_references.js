@@ -11,5 +11,4 @@
 /// <reference path="bower_components/webcomponentsjs/webcomponents.js" />
 /// <reference path="bower_components/web-component-tester/browser.js" />
 /// <reference path="service-worker.js" />
-/// <reference path="src/oidc-client.min.js" />
 /// <reference path="sw-precache-config.js" />
