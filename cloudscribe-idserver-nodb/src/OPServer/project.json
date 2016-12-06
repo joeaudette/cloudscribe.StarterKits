@@ -34,11 +34,11 @@
     },
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.1.0",
     "SaasKit.Multitenancy": "1.1.*",
-    "cloudscribe.IDS4Fork": "1.0.0-*",
+    "cloudscribe.IDS4Fork": "1.0.0-rc20161023",
     "cloudscribe.Core.IdentityServerIntegration": "1.1.0-*",
     "cloudscribe.Core.IdentityServer.NoDb": "1.1.0-*",
-    "IdentityModel": "2.0.0-*",
-    "IdentityServer4.AccessTokenValidation": "1.0.1-*"
+    "IdentityModel": "2.0.1-*",
+    "IdentityServer4.AccessTokenValidation": "1.0.1-rc3"
   },
 
   "tools": {
