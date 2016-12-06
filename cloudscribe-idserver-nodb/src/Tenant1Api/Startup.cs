@@ -55,7 +55,7 @@ namespace Tenant1Api
             app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
             {
                 Authority = "http://localhost:5000",
-                ApiName = "tenant1RemoteApi",
+                ScopeName = "tenant1RemoteApi",
 
                 RequireHttpsMetadata = false
             });
