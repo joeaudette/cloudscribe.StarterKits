@@ -1,0 +1,1 @@
+{"Enabled":true,"Name":"tenant1RemoteApi","DisplayName":"tenant1 Remote Api","Description":null,"ApiSecrets":[],"UserClaims":[],"Scopes":[{"Name":"tenant1RemoteApi","DisplayName":null,"Description":null,"Required":false,"Emphasize":false,"ShowInDiscoveryDocument":true,"UserClaims":[]}]}

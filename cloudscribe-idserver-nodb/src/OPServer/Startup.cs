@@ -79,7 +79,7 @@ namespace OPServer
                         .AddCloudscribeIdentityServerIntegration()
                         // https://identityserver4.readthedocs.io/en/dev/topics/crypto.html
                         //.SetSigningCredential(cert) // create a certificate for use in production
-                        .SetTemporarySigningCredential() // don't use this for production
+                        .AddTemporarySigningCredential() // don't use this for production
                         ;
 
             services.AddLocalization(options => options.ResourcesPath = "GlobalResources");
@@ -135,7 +135,7 @@ namespace OPServer
                     options.AddCloudscribeViewLocationFormats();
 
                     options.AddEmbeddedViewsForNavigation();
-                    options.AddEmbeddedViewsForCloudscribeCore();
+                    options.AddEmbeddedBootstrap3ViewsForCloudscribeCore();
                     options.AddEmbeddedViewsForCloudscribeLogging();
                     options.AddEmbeddedViewsForCloudscribeIdentityServerIntegration();
 

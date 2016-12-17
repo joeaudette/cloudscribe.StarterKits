@@ -1,1 +1,0 @@
-{"Enabled":true,"Name":"tenant2RemoteApi","DisplayName":"tenant2 Remote Api","Description":"tenant2 Remote Api","Required":false,"Emphasize":false,"Type":1,"Claims":[],"IncludeAllClaimsForUser":false,"ClaimsRule":null,"ShowInDiscoveryDocument":true,"ScopeSecrets":[],"AllowUnrestrictedIntrospection":false}

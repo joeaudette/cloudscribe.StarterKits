@@ -1,0 +1,1 @@
+{"Enabled":true,"Name":"openid","DisplayName":"Your user identifier","Description":null,"Required":true,"Emphasize":false,"ShowInDiscoveryDocument":false,"UserClaims":["subject"]}
