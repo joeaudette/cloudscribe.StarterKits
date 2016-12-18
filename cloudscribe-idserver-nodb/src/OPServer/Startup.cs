@@ -78,7 +78,7 @@ namespace OPServer
                         .AddCloudscribeCoreNoDbIdentityServerStorage()
                         .AddCloudscribeIdentityServerIntegration()
                         // https://identityserver4.readthedocs.io/en/dev/topics/crypto.html
-                        //.SetSigningCredential(cert) // create a certificate for use in production
+                        //.AddSigningCredential(cert) // create a certificate for use in production
                         .AddTemporarySigningCredential() // don't use this for production
                         ;
 

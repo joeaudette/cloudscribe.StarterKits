@@ -84,8 +84,8 @@ namespace OPServer
                 .AddCloudscribeCoreEFIdentityServerStorageMSSQL(connectionString)
                 .AddCloudscribeIdentityServerIntegration()
                 // https://identityserver4.readthedocs.io/en/dev/topics/crypto.html
-                //.SetSigningCredential(cert) // create a certificate for use in production
-                .SetTemporarySigningCredential() // don't use this for production
+                //.AddSigningCredential(cert) // create a certificate for use in production
+                .AddTemporarySigningCredential() // don't use this for production
                 ;
 
             services.AddCloudscribeLogging();
@@ -144,7 +144,7 @@ namespace OPServer
                     options.AddCloudscribeViewLocationFormats();
 
                     options.AddEmbeddedViewsForNavigation();
-                    options.AddEmbeddedViewsForCloudscribeCore();
+                    options.AddEmbeddedBootstrap3ViewsForCloudscribeCore();
                     options.AddEmbeddedViewsForCloudscribeLogging();
                     options.AddEmbeddedViewsForCloudscribeIdentityServerIntegration();
 
@@ -218,16 +218,16 @@ namespace OPServer
                 // ie apis that are hosted in the same web app endpoint with the authority server
                 // this is not needed here if you are only using separate api endpoints
                 // it is needed in the startup of those separate endpoints
-                //builder.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
-                //{
-                //    Authority = "https://localhost:5000",
-                //    // using the site aliasid as the scope so each tenant has a different scope
-                //    // you can view the aliasid from site settings
-                //    // clients must be configured with the scope to have access to the apis for the tenant
-                //    ApiName = ctx.Tenant.AliasId,
+                builder.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
+                {
+                    Authority = "https://localhost:51408",
+                    // using the site aliasid as the scope so each tenant has a different scope
+                    // you can view the aliasid from site settings
+                    // clients must be configured with the scope to have access to the apis for the tenant
+                    ApiName = ctx.Tenant.AliasId,
 
-                //    RequireHttpsMetadata = false
-                //});
+                    RequireHttpsMetadata = false
+                });
 
             });
 

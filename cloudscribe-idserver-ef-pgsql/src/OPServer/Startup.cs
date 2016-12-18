@@ -58,9 +58,9 @@ namespace OPServer
             // it is of paramount importance to keep the keys secure, so apply your own security policy and practices 
             // in considering how best to manage these keys and where to store them
             // anyone with access to the keys could forge a cookie with admin credentials and gain control of your app/site
-            //string pathToCryptoKeys = Path.Combine(environment.ContentRootPath, "dp_keys");
+            string pathToCryptoKeys = Path.Combine(environment.ContentRootPath, "dp_keys");
             services.AddDataProtection()
-                //.PersistKeysToFileSystem(new System.IO.DirectoryInfo(pathToCryptoKeys))
+                .PersistKeysToFileSystem(new System.IO.DirectoryInfo(pathToCryptoKeys))
                 ;
 
             services.Configure<ForwardedHeadersOptions>(options =>
@@ -85,8 +85,8 @@ namespace OPServer
                 .AddCloudscribeCoreEFIdentityServerStoragePostgreSql(connectionString)
                 .AddCloudscribeIdentityServerIntegration()
                 // https://identityserver4.readthedocs.io/en/dev/topics/crypto.html
-                //.SetSigningCredential(cert) // create a certificate for use in production
-                .SetTemporarySigningCredential() // don't use this for production
+                //.AddSigningCredential(cert) // create a certificate for use in production
+                .AddTemporarySigningCredential() // don't use this for production
                 ;
 
             services.AddCloudscribeLogging();
@@ -145,7 +145,7 @@ namespace OPServer
                     options.AddCloudscribeViewLocationFormats();
 
                     options.AddEmbeddedViewsForNavigation();
-                    options.AddEmbeddedViewsForCloudscribeCore();
+                    options.AddEmbeddedBootstrap3ViewsForCloudscribeCore();
                     options.AddEmbeddedViewsForCloudscribeLogging();
                     options.AddEmbeddedViewsForCloudscribeIdentityServerIntegration();
 
@@ -219,16 +219,16 @@ namespace OPServer
                 // ie apis that are hosted in the same web app endpoint with the authority server
                 // this is not needed here if you are only using separate api endpoints
                 // it is needed in the startup of those separate endpoints
-                //builder.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
-                //{
-                //    Authority = "https://localhost:5000",
-                //    // using the site aliasid as the scope so each tenant has a different scope
-                //    // you can view the aliasid from site settings
-                //    // clients must be configured with the scope to have access to the apis for the tenant
-                //    ApiName = ctx.Tenant.AliasId,
+                builder.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
+                {
+                    Authority = "https://localhost:51408",
+                    // using the site aliasid as the scope so each tenant has a different scope
+                    // you can view the aliasid from site settings
+                    // clients must be configured with the scope to have access to the apis for the tenant
+                    ApiName = ctx.Tenant.AliasId,
 
-                //    RequireHttpsMetadata = false
-                //});
+                    RequireHttpsMetadata = false
+                });
 
             });
 
