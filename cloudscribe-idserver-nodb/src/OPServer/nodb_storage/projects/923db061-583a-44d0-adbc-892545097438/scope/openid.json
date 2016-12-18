@@ -1,1 +1,0 @@
-{"Enabled":true,"Name":"openid","DisplayName":"Your user identifier","Description":null,"Required":false,"Emphasize":false,"Type":0,"Claims":[{"Name":"sub","Description":null,"AlwaysIncludeInIdToken":true}],"IncludeAllClaimsForUser":false,"ClaimsRule":null,"ShowInDiscoveryDocument":true,"ScopeSecrets":[],"AllowUnrestrictedIntrospection":false}

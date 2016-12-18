@@ -1,0 +1,1 @@
+{"Enabled":true,"Name":"profile","DisplayName":"User profile","Description":"Your user profile information (first name, last name, etc.)","Required":false,"Emphasize":false,"ShowInDiscoveryDocument":false,"UserClaims":["name","profile","email"]}
