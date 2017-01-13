@@ -30,11 +30,11 @@ namespace OPServer
                 .AddJsonFile("appsettings.local.overrides.json", optional: true)
                 ;
 
-            if (env.IsDevelopment())
-            {
-                // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
-                builder.AddUserSecrets();
-            }
+            //if (env.IsDevelopment())
+            //{
+            //    // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
+            //    builder.AddUserSecrets();
+            //}
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
