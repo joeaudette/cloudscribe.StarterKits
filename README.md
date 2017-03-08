@@ -1,6 +1,6 @@
 # cloudscribe.StarterKits
 
-All of these samples are intended as something you could copy and use to start your own ASP.NET Core project in Visual Studio 2015. The WebApp in each solution is yours to customize and add your own custom functionality. There is no "cloudscribe" source code in the samples they only have NuGet dependencies on cloudscribe libraries and they have been configured with example Startup.cs code to get things working.
+All of these samples are intended as something you could copy and use to start your own ASP.NET Core project in Visual Studio 2017. The WebApp in each solution is yours to customize and add your own custom functionality. There is no "cloudscribe" source code in the samples they only have NuGet dependencies on cloudscribe libraries and they have been configured with example Startup.cs code to get things working.
 
 For guidance on building applications with cloudscribe, [see this wiki article](https://github.com/joeaudette/cloudscribe.StarterKits/wiki/Building-Web-Apps-with-cloudscribe)
 
