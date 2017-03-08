@@ -21,14 +21,14 @@ namespace WebApp
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
 
             builder.AddJsonFile("app-tenants-users.json");
             builder.AddJsonFile("app-content-project-settings.json");
             // this file name is ignored by gitignore
             // so you can create it and use on your local dev machine
             // remember last config source added wins if it has the same settings
-            builder.AddJsonFile("appsettings.local.overrides.json", optional: true);
+            builder.AddJsonFile("appsettings.dev.json", optional: true, reloadOnChange: true);
             builder.AddEnvironmentVariables();
 
             Configuration = builder.Build();
@@ -98,7 +98,7 @@ namespace WebApp
 
                     // If you download and install the views below your view folder you don't need this method and you can customize the views.
                     // You can get the views from https://github.com/joeaudette/cloudscribe.SimpleContent/tree/master/src/cloudscribe.SimpleContent.Blog.Web/Views
-                    options.AddEmbeddedViewsForSimpleContent();
+                    options.AddBootstrap3EmbeddedViewsForSimpleContent();
 
 
                     options.ViewLocationExpanders.Add(new SiteViewLocationExpander());

@@ -26,15 +26,8 @@ namespace WebApp
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddJsonFile("appsettings.local.overrides.json", optional: true);
-
-
-            //if (env.IsDevelopment())
-            //{
-            //    // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
-            //    builder.AddUserSecrets();
-            //}
-
+                .AddJsonFile("appsettings.dev.json", optional: true);
+            
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
             
@@ -114,14 +107,15 @@ namespace WebApp
                 //}));
             });
 
+            var useSsl = Configuration.GetValue<bool>("AppSettings:UseSsl");
             services.Configure<MvcOptions>(options =>
             {
-                //  if(environment.IsProduction())
-                //  {
-                options.Filters.Add(new RequireHttpsAttribute());
-                //   }
-                
-                
+                if (useSsl)
+                {
+                    options.Filters.Add(new RequireHttpsAttribute());
+                }
+
+
             });
 
             services.AddMvc()
@@ -130,7 +124,7 @@ namespace WebApp
                     options.AddCloudscribeViewLocationFormats();
 
                     options.AddEmbeddedViewsForNavigation();
-                    options.AddEmbeddedViewsForCloudscribeCore();
+                    options.AddEmbeddedBootstrap3ViewsForCloudscribeCore();
                     options.AddEmbeddedViewsForCloudscribeLogging();
                     
                     options.ViewLocationExpanders.Add(new cloudscribe.Core.Web.Components.SiteViewLocationExpander());

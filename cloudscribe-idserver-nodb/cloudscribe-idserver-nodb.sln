@@ -1,26 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{78845A0A-E1A5-47D9-AF9F-8AED94B5894F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7DD49682-4247-4C07-BCD9-336272391A4A}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "OPServer", "src\OPServer\OPServer.xproj", "{3E39A755-DDF2-4D18-982B-60ACC77EBFED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OPServer", "src\OPServer\OPServer.csproj", "{3E39A755-DDF2-4D18-982B-60ACC77EBFED}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Tenant1Api", "src\Tenant1Api\Tenant1Api.xproj", "{A0D2622F-86A4-469E-9378-DB410BA2A831}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tenant1Api", "src\Tenant1Api\Tenant1Api.csproj", "{A0D2622F-86A4-469E-9378-DB410BA2A831}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Tenant2Api", "src\Tenant2Api\Tenant2Api.xproj", "{42DB06F6-5F08-42EB-858B-0F1D9419EBC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tenant2Api", "src\Tenant2Api\Tenant2Api.csproj", "{42DB06F6-5F08-42EB-858B-0F1D9419EBC7}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Tenant1JsClient", "src\Tenant1JsClient\Tenant1JsClient.xproj", "{5AA8D26C-1A4B-4973-95F4-9A7FFA98B2ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tenant1JsClient", "src\Tenant1JsClient\Tenant1JsClient.csproj", "{5AA8D26C-1A4B-4973-95F4-9A7FFA98B2ED}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Tenant2JsClient", "src\Tenant2JsClient\Tenant2JsClient.xproj", "{C3FEC127-106A-4C48-8322-017A9EE31805}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tenant2JsClient", "src\Tenant2JsClient\Tenant2JsClient.csproj", "{C3FEC127-106A-4C48-8322-017A9EE31805}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "HtmlClient", "src\HtmlClient\HtmlClient.xproj", "{4377FAA4-ED77-4268-A9FC-B903FB855A00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlClient", "src\HtmlClient\HtmlClient.csproj", "{4377FAA4-ED77-4268-A9FC-B903FB855A00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

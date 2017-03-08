@@ -65,6 +65,7 @@ namespace WebApp
             services.AddSimpleContentRssSyndiction();
             
             // Add MVC services to the services container.
+
             services.Configure<MvcOptions>(options =>
             {
                 options.CacheProfiles.Add("SiteMapCacheProfile",
@@ -93,7 +94,7 @@ namespace WebApp
 
                     // If you download and install the views below your view folder you don't need this method and you can customize the views.
                     // You can get the views from https://github.com/joeaudette/cloudscribe.SimpleContent/tree/master/src/cloudscribe.SimpleContent.Blog.Web/Views
-                    options.AddEmbeddedViewsForSimpleContent();
+                    options.AddBootstrap3EmbeddedViewsForSimpleContent();
                     
                 });
         }

@@ -14,6 +14,7 @@ using System.Globalization;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.DataProtection;
 using System.IO;
+using Microsoft.AspNetCore.Mvc;
 
 namespace OPServer
 {
@@ -27,15 +28,10 @@ namespace OPServer
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddJsonFile("appsettings.local.overrides.json", optional: true)
+                .AddJsonFile("appsettings.dev.json", optional: true)
                 ;
 
-            //if (env.IsDevelopment())
-            //{
-            //    // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
-            //    builder.AddUserSecrets();
-            //}
-
+           
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
 
@@ -130,14 +126,15 @@ namespace OPServer
             });
 
             // for production be sure to use ssl
-            //services.Configure<MvcOptions>(options =>
-            //{
-            //    if (environment.IsProduction())
-            //    {
-            //        options.Filters.Add(new RequireHttpsAttribute());
-            //    }
+            var useSsl = Configuration.GetValue<bool>("AppSettings:UseSsl");
+            services.Configure<MvcOptions>(options =>
+            {
+                if (useSsl)
+                {
+                    options.Filters.Add(new RequireHttpsAttribute());
+                }
 
-            //});
+            });
 
             services.AddMvc()
                 .AddRazorOptions(options =>

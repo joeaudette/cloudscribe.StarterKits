@@ -23,8 +23,8 @@ namespace OPServer
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddJsonFile("appsettings.local.overrides.json", optional: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
+                .AddJsonFile("appsettings.dev.json", optional: true,  reloadOnChange: true)
                 .AddEnvironmentVariables();
 
             Configuration = builder.Build();
@@ -120,14 +120,15 @@ namespace OPServer
             });
 
             // for production be sure to use ssl
-            //services.Configure<MvcOptions>(options =>
-            //{
-            //    if (environment.IsProduction())
-            //    {
-            //        options.Filters.Add(new RequireHttpsAttribute());
-            //    }
+            var useSsl = Configuration.GetValue<bool>("AppSettings:UseSsl");
+            services.Configure<MvcOptions>(options =>
+            {
+                if (useSsl)
+                {
+                    options.Filters.Add(new RequireHttpsAttribute());
+                }
 
-            //});
+            });
 
             services.AddMvc()
                 .AddRazorOptions(options =>
@@ -137,7 +138,7 @@ namespace OPServer
                     options.AddEmbeddedViewsForNavigation();
                     options.AddEmbeddedBootstrap3ViewsForCloudscribeCore();
                     options.AddEmbeddedViewsForCloudscribeLogging();
-                    options.AddEmbeddedViewsForCloudscribeIdentityServerIntegration();
+                    options.AddEmbeddedBootstrap3ViewsForCloudscribeCoreIdentityServerIntegration();
 
                     options.ViewLocationExpanders.Add(new cloudscribe.Core.Web.Components.SiteViewLocationExpander());
                 });

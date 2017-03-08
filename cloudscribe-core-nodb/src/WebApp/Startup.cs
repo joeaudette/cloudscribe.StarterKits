@@ -24,7 +24,7 @@ namespace WebApp
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddJsonFile("appsettings.local.overrides.json", optional: true)
+                .AddJsonFile("appsettings.dev.json", optional: true)
                 .AddEnvironmentVariables();
 
             Configuration = builder.Build();
@@ -98,12 +98,13 @@ namespace WebApp
                 //}));
             });
 
+            var useSsl = Configuration.GetValue<bool>("AppSettings:UseSsl");
             services.Configure<MvcOptions>(options =>
             {
-                //  if(environment.IsProduction())
-                //  {
-                options.Filters.Add(new RequireHttpsAttribute());
-                //   }
+                if (useSsl)
+                {
+                    options.Filters.Add(new RequireHttpsAttribute());
+                }
 
             });
 
@@ -113,7 +114,7 @@ namespace WebApp
                     options.AddCloudscribeViewLocationFormats();
 
                     options.AddEmbeddedViewsForNavigation();
-                    options.AddEmbeddedViewsForCloudscribeCore();
+                    options.AddEmbeddedBootstrap3ViewsForCloudscribeCore();
                     options.AddEmbeddedViewsForCloudscribeLogging();
                     ;
 

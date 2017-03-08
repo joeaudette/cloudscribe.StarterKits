@@ -32,14 +32,8 @@ namespace WebApp
             // add this file name to your .gitignore file
             // so you can create it and use on your local dev machine
             // remember last config source added wins if it has the same settings
-            builder.AddJsonFile("appsettings.local.overrides.json", optional: true);
+            builder.AddJsonFile("appsettings.dev.json", optional: true, reloadOnChange: true);
             
-            //if (env.IsDevelopment())
-            //{
-            //    // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
-            //    builder.AddUserSecrets();
-            //}
-
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
             environment = env;
@@ -126,12 +120,13 @@ namespace WebApp
                 //}));
             });
 
+            var useSsl = Configuration.GetValue<bool>("AppSettings:UseSsl");
             services.Configure<MvcOptions>(options =>
             {
-                //  if(environment.IsProduction())
-                //  {
-                options.Filters.Add(new RequireHttpsAttribute());
-                //   }
+                if (useSsl)
+                {
+                    options.Filters.Add(new RequireHttpsAttribute());
+                }
 
 
                 options.CacheProfiles.Add("SiteMapCacheProfile",
@@ -153,9 +148,9 @@ namespace WebApp
                     options.AddCloudscribeViewLocationFormats();
 
                     options.AddEmbeddedViewsForNavigation();
-                    options.AddEmbeddedViewsForCloudscribeCore();
+                    options.AddEmbeddedBootstrap3ViewsForCloudscribeCore();
                     options.AddEmbeddedViewsForCloudscribeLogging();
-                    options.AddEmbeddedViewsForSimpleContent();
+                    options.AddBootstrap3EmbeddedViewsForSimpleContent();
                     options.AddEmbeddedViewsForCloudscribeCoreSimpleContentIntegration();
 
                     options.ViewLocationExpanders.Add(new cloudscribe.Core.Web.Components.SiteViewLocationExpander());
