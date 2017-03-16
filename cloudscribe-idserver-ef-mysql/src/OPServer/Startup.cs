@@ -144,7 +144,7 @@ namespace OPServer
                     options.AddEmbeddedViewsForNavigation();
                     options.AddEmbeddedBootstrap3ViewsForCloudscribeCore();
                     options.AddEmbeddedViewsForCloudscribeLogging();
-                    options.AddEmbeddedViewsForCloudscribeIdentityServerIntegration();
+                    options.AddEmbeddedBootstrap3ViewsForCloudscribeCoreIdentityServerIntegration();
 
                     options.ViewLocationExpanders.Add(new cloudscribe.Core.Web.Components.SiteViewLocationExpander());
                 });
