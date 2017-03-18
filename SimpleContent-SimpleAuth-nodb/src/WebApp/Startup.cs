@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using cloudscribe.SimpleContent.Models;
+using cloudscribe.FileManager.Web;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Http;
@@ -59,10 +60,9 @@ namespace WebApp
 
             services.AddCloudscribeCommmon();
             services.AddSimpleContent();
-
             services.AddMetaWeblogForSimpleContent(Configuration.GetSection("MetaWeblogApiOptions"));
-
             services.AddSimpleContentRssSyndiction();
+            services.AddCloudscribeFileManager(Configuration);
             
             // Add MVC services to the services container.
 
@@ -82,6 +82,11 @@ namespace WebApp
 
             });
 
+            services.AddRouting(options =>
+            {
+                options.LowercaseUrls = true;
+            });
+
             services.AddMvc()
                 .AddRazorOptions(options =>
                 {
@@ -95,7 +100,9 @@ namespace WebApp
                     // If you download and install the views below your view folder you don't need this method and you can customize the views.
                     // You can get the views from https://github.com/joeaudette/cloudscribe.SimpleContent/tree/master/src/cloudscribe.SimpleContent.Blog.Web/Views
                     options.AddBootstrap3EmbeddedViewsForSimpleContent();
-                    
+
+                    options.AddBootstrap3EmbeddedViewsForFileManager();
+
                 });
         }
 
@@ -142,6 +149,8 @@ namespace WebApp
 
             app.UseMvc(routes =>
             {
+                routes.AddCkEditorRoutesForSimpleContent();
+                routes.AddCloudscribeFileManagerRoutes();
                 routes.AddStandardRoutesForSimpleContent();
                 // the Pages feature routes by default would take over as the defualt route
                 // if you only want the blog then comment out the line above and use:
@@ -150,6 +159,7 @@ namespace WebApp
                 // instead of the pages feature - to use that you would also want to edit
                 // the navigation.xml file to remove the pages feature treebuilder reference 
                 // and add the other actions of the home controller into the menu
+                
 
                 // this route is needed for the SimpleAuth /Login
                 routes.MapRoute(
@@ -186,6 +196,20 @@ namespace WebApp
                    {
                        authBuilder.RequireRole("Administrators");
                    });
+
+                options.AddPolicy(
+                    "FileManagerPolicy",
+                    authBuilder =>
+                    {
+                        authBuilder.RequireRole("Administrators");
+                    });
+
+                options.AddPolicy(
+                    "FileManagerDeletePolicy",
+                    authBuilder =>
+                    {
+                        authBuilder.RequireRole("Administrators");
+                    });
 
                 // add other policies here 
 

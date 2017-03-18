@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using cloudscribe.SimpleContent.Models;
+using cloudscribe.FileManager.Web;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Http;
@@ -62,10 +63,9 @@ namespace WebApp
             services.AddScoped<IProjectSecurityResolver, cloudscribe.SimpleContent.Security.SimpleAuth.ProjectSecurityResolver>();
             services.AddCloudscribeCommmon();
             services.AddSimpleContent();
-
             services.AddMetaWeblogForSimpleContent(Configuration.GetSection("MetaWeblogApiOptions"));
-
             services.AddSimpleContentRssSyndiction();
+            services.AddCloudscribeFileManager(Configuration);
 
 
             // Add MVC services to the services container.
@@ -86,6 +86,11 @@ namespace WebApp
 
             });
 
+            services.AddRouting(options =>
+            {
+                options.LowercaseUrls = true;
+            });
+
             services.AddMvc()
                 .AddRazorOptions(options =>
                 {
@@ -100,6 +105,7 @@ namespace WebApp
                     // You can get the views from https://github.com/joeaudette/cloudscribe.SimpleContent/tree/master/src/cloudscribe.SimpleContent.Blog.Web/Views
                     options.AddBootstrap3EmbeddedViewsForSimpleContent();
 
+                    options.AddBootstrap3EmbeddedViewsForFileManager();
 
                     options.ViewLocationExpanders.Add(new SiteViewLocationExpander());
                 });
@@ -148,6 +154,8 @@ namespace WebApp
 
             app.UseMvc(routes =>
             {
+                routes.AddCkEditorRoutesForSimpleContent();
+                routes.AddCloudscribeFileManagerRoutes();
                 routes.AddStandardRoutesForSimpleContent();
 
                 routes.MapRoute(
@@ -181,7 +189,21 @@ namespace WebApp
                     "PageEditPolicy",
                     authBuilder =>
                     {
-                        authBuilder.RequireRole("Administrators");
+                        authBuilder.RequireRole("Admins");
+                    });
+
+                options.AddPolicy(
+                    "FileManagerPolicy",
+                    authBuilder =>
+                    {
+                        authBuilder.RequireRole("Admins");
+                    });
+
+                options.AddPolicy(
+                    "FileManagerDeletePolicy",
+                    authBuilder =>
+                    {
+                        authBuilder.RequireRole("Admins");
                     });
 
                 // add other policies here 

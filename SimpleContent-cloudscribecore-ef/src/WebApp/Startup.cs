@@ -78,10 +78,9 @@ namespace WebApp
             services.AddCloudscribeCore(Configuration);
             services.AddCloudscribeCoreIntegrationForSimpleContent();
             services.AddSimpleContent(Configuration);
-
             services.AddMetaWeblogForSimpleContent(Configuration.GetSection("MetaWeblogApiOptions"));
-
             services.AddSimpleContentRssSyndiction();
+            services.AddCloudscribeFileManagerIntegration(Configuration);
 
             services.AddLocalization(options => options.ResourcesPath = "GlobalResources");
 
@@ -142,6 +141,11 @@ namespace WebApp
                      });
             });
 
+            services.AddRouting(options =>
+            {
+                options.LowercaseUrls = true;
+            });
+
             services.AddMvc()
                 .AddRazorOptions(options =>
                 {
@@ -152,6 +156,7 @@ namespace WebApp
                     options.AddEmbeddedViewsForCloudscribeLogging();
                     options.AddBootstrap3EmbeddedViewsForSimpleContent();
                     options.AddEmbeddedViewsForCloudscribeCoreSimpleContentIntegration();
+                    options.AddBootstrap3EmbeddedViewsForFileManager();
 
                     options.ViewLocationExpanders.Add(new cloudscribe.Core.Web.Components.SiteViewLocationExpander());
                 })
@@ -228,6 +233,8 @@ namespace WebApp
                 }
 
                 routes.AddBlogRoutesForSimpleContent();
+                routes.AddCkEditorRoutesForSimpleContent();
+                routes.AddCloudscribeFileManagerRoutesForSimpleContent();
 
                 if (useFolders)
                 {
@@ -284,6 +291,20 @@ namespace WebApp
                 //    {
                 //        authBuilder.RequireRole("Administrators");
                 //    });
+
+                options.AddPolicy(
+                    "FileManagerPolicy",
+                    authBuilder =>
+                    {
+                        authBuilder.RequireRole("Administrators");
+                    });
+
+                options.AddPolicy(
+                    "FileManagerDeletePolicy",
+                    authBuilder =>
+                    {
+                        authBuilder.RequireRole("Administrators");
+                    });
 
                 // add other policies here 
 
