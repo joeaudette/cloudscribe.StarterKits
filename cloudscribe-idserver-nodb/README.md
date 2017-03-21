@@ -33,6 +33,16 @@ The Tenant 1 Html/PolymerJs Client is at http://localhost:5010  (This is a fanci
 
 The Tenant 2 Js Client is at http://localhost:5007
 
+##### Screenshots
+
+![ploymer html client screen shot](https://github.com/joeaudette/cloudscribe/raw/master/screenshots/polymer-html-client.png)
+
+![ploymer html client login screen shot](https://github.com/joeaudette/cloudscribe/raw/master/screenshots/polymer-html-client-login.png)
+
+![ploymer html client logged in screen shot](https://github.com/joeaudette/cloudscribe/raw/master/screenshots/polymer-html-client-logged-in.png)
+
+![ploymer html client api call screen shot](https://github.com/joeaudette/cloudscribe/raw/master/screenshots/polymer-html-client-api.png)
+
 
 ## Meta
 
