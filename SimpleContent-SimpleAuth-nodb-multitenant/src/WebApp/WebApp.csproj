@@ -39,7 +39,7 @@
     <PackageReference Include="cloudscribe.SimpleContent.Storage.NoDb" Version="1.1.1-rc20170317" />
     <PackageReference Include="cloudscribe.SimpleContent.MetaWeblog" Version="1.1.1-rc20170317" />
     <PackageReference Include="cloudscribe.SimpleContent.Security.SimpleAuth" Version="1.1.1-rc20170317" />
-    <PackageReference Include="cloudscribe.SimpleContent.Web" Version="1.1.1-rc20170320" />
+    <PackageReference Include="cloudscribe.SimpleContent.Web" Version="1.1.1-rc20170326" />
     <PackageReference Include="cloudscribe.SimpleContent.Syndication" Version="1.1.1-rc20170317" />
     <PackageReference Include="cloudscribe.Syndication.Web" Version="1.1.0" />
     <PackageReference Include="cloudscribe.FileManager.Web" Version="1.0.0-rc20170320" />
