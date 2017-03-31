@@ -43,11 +43,11 @@
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="1.1.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.0" />
     <PackageReference Include="SaasKit.Multitenancy" Version="1.1.4" />
-    <PackageReference Include="cloudscribe.IDS4Fork" Version="1.1.0-rc20161215" />
-    <PackageReference Include="cloudscribe.Core.IdentityServerIntegration" Version="1.1.0-rc20170323" />
-    <PackageReference Include="cloudscribe.Core.IdentityServer.NoDb" Version="1.1.0-rc20170323" />
-    <PackageReference Include="IdentityModel" Version="2.1.1" />
-    <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="1.0.1" />
+    <PackageReference Include="cloudscribe.IDS4Fork" Version="1.4.1-rc20170328" />
+    <PackageReference Include="cloudscribe.Core.IdentityServerIntegration" Version="1.1.0-rc20170327" />
+    <PackageReference Include="cloudscribe.Core.IdentityServer.NoDb" Version="1.1.0-rc20170327" />
+    <PackageReference Include="IdentityModel" Version="2.6.0" />
+    <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="1.1.0" />
   </ItemGroup>
 
  

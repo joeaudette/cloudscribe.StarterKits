@@ -134,6 +134,12 @@ namespace OPServer
 
             });
 
+            // it is recommended to use lower case urls
+            services.AddRouting(options =>
+            {
+                options.LowercaseUrls = true;
+            });
+
             services.AddMvc()
                 .AddRazorOptions(options =>
                 {
@@ -252,7 +258,7 @@ namespace OPServer
 
                 routes.MapRoute(
                     name: "errorhandler",
-                    template: "{controller}/{action}/{statusCode}"
+                    template: "home/error/{statusCode}"
                     );
 
                 routes.MapRoute(
@@ -308,7 +314,7 @@ namespace OPServer
             var excludedLoggers = new List<string>
             {
                 "Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware",
-                "Microsoft.AspNetCore.Hosting.Internal.WebHost",
+                //"Microsoft.AspNetCore.Hosting.Internal.WebHost",
             };
 
             Func<string, LogLevel, bool> logFilter = (string loggerName, LogLevel logLevel) =>

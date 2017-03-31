@@ -22,9 +22,17 @@ namespace OPServer.Controllers
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult About(int? id)
         {
-            ViewData["Message"] = "Your application description page.";
+            if(id.HasValue)
+            {
+                ViewData["Message"] = $"Your application description page. for ID {id.Value}";
+            }
+            else
+            {
+                ViewData["Message"] = "Your application description page.";
+            }
+            
 
             return View();
         }

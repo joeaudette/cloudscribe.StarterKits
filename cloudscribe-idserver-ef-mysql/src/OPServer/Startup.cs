@@ -136,6 +136,12 @@ namespace OPServer
 
             });
 
+            // it is recommended to use lower case urls
+            services.AddRouting(options =>
+            {
+                options.LowercaseUrls = true;
+            });
+
             services.AddMvc()
                 .AddRazorOptions(options =>
                 {
@@ -253,9 +259,9 @@ namespace OPServer
                 }
 
                 routes.MapRoute(
-                    name: "errorhandler",
-                    template: "{controller}/{action}/{statusCode}"
-                    );
+                   name: "errorhandler",
+                   template: "home/error/{statusCode}"
+                   );
 
                 routes.MapRoute(
                     name: "default",

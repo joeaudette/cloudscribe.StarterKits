@@ -108,6 +108,12 @@ namespace WebApp
 
             });
 
+            // it is recommended to use lower case urls
+            services.AddRouting(options =>
+            {
+                options.LowercaseUrls = true;
+            });
+
             services.AddMvc()
                 .AddRazorOptions(options =>
                 {
@@ -195,7 +201,7 @@ namespace WebApp
 
                 routes.MapRoute(
                     name: "errorhandler",
-                    template: "{controller}/{action}/{statusCode}"
+                    template: "home/error/{statusCode}"
                     );
 
                 routes.MapRoute(

@@ -114,8 +114,12 @@ namespace WebApp
                 {
                     options.Filters.Add(new RequireHttpsAttribute());
                 }
+            });
 
-
+            // it is recommended to use lower case urls
+            services.AddRouting(options =>
+            {
+                options.LowercaseUrls = true;
             });
 
             services.AddMvc()
@@ -212,7 +216,7 @@ namespace WebApp
 
                 routes.MapRoute(
                     name: "errorhandler",
-                    template: "{controller}/{action}/{statusCode}"
+                    template: "home/error/{statusCode}"
                     );
 
                 routes.MapRoute(
