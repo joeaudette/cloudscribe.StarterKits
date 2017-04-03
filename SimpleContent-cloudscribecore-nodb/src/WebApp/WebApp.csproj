@@ -35,8 +35,8 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.0" />
     <PackageReference Include="cloudscribe.Core.Web" Version="1.1.0-rc20170401" />
     <PackageReference Include="cloudscribe.Core.Storage.NoDb" Version="1.1.0-rc20170401" />
-    <PackageReference Include="cloudscribe.Logging.NoDb" Version="1.1.0-rc20161129" />
-    <PackageReference Include="cloudscribe.Logging.Web" Version="1.1.0-rc20170317" />
+    <PackageReference Include="cloudscribe.Logging.NoDb" Version="1.1.0-rc20170401" />
+    <PackageReference Include="cloudscribe.Logging.Web" Version="1.1.0-rc20170401" />
     <PackageReference Include="cloudscribe.Web.Navigation" Version="1.1.0-rc20170323" />
     <PackageReference Include="cloudscribe.Web.Pagination" Version="1.1.3" />
     <PackageReference Include="cloudscribe.SimpleContent.Storage.NoDb" Version="1.1.1-rc20170317" />
