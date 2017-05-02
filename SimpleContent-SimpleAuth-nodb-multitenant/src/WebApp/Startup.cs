@@ -158,6 +158,7 @@ namespace WebApp
                 routes.AddCloudscribeFileManagerRoutes();
                 routes.AddStandardRoutesForSimpleContent();
 
+
                 routes.MapRoute(
                     name: "def",
                     template: "{controller}/{action}"
