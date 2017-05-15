@@ -9,7 +9,21 @@
     padding-left: 15px;
     padding-right: 15px;
 }
+.readable-theme , 
+.paper-theme {
+    margin-top: 18px;
+}
 
+
+.darkly-theme,
+.flatly-theme {
+    margin-top: 10px;
+}
+
+.sandstone-theme,
+.journal-theme {
+    margin-top: 14px;
+}
 /* Set widths on the form inputs since otherwise they're 100% wide */
 /*
 input,
@@ -18,7 +32,6 @@ textarea {
     max-width: 280px;
 }
 */
-
 /* Carousel */
 .carousel-caption p {
     font-size: 20px;
@@ -45,7 +58,10 @@ textarea {
   }
 }
 
-header.navbar-fixed-top { min-height:45px;} /* make room for gravatar */
+/* make room for gravatar */
+
+header.navbar-fixed-top { min-height:45px;} 
+    
 
 div.navbar-gravatar {
 
@@ -54,6 +70,7 @@ div.navbar-gravatar {
 
 }
     
+    
 
 .navbar-text img {
   max-height:30px;
@@ -61,6 +78,11 @@ div.navbar-gravatar {
   vertical-align:middle;
   padding:0;
   margin:0;
+}
+
+.mybrand {
+    padding-top:15px;
+    
 }
 
 img, video, iframe {

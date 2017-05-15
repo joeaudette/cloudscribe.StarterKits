@@ -27,8 +27,8 @@ namespace OPServer
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddJsonFile("appsettings.dev.json", optional: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
+                .AddJsonFile("appsettings.dev.json", optional: true, reloadOnChange: true)
                 ;
 
             builder.AddEnvironmentVariables();
@@ -64,9 +64,8 @@ namespace OPServer
             });
 
             services.AddMemoryCache();
-            // we currently only use session for alerts, so we can fire an alert on the next request
-            // if session is disabled this feature fails quietly with no errors
-            services.AddSession();
+           
+            //services.AddSession();
 
             ConfigureAuthPolicy(services);
 
@@ -186,7 +185,7 @@ namespace OPServer
             app.UseForwardedHeaders();
             app.UseStaticFiles();
 
-            app.UseSession();
+            //app.UseSession();
 
             app.UseRequestLocalization(localizationOptionsAccessor.Value);
 
@@ -197,7 +196,7 @@ namespace OPServer
             app.UsePerTenant<cloudscribe.Core.Models.SiteContext>((ctx, builder) =>
             {
                 // custom 404 and error page - this preserves the status code (ie 404)
-                if (string.IsNullOrEmpty(ctx.Tenant.SiteFolderName))
+                if (multiTenantOptions.Mode != cloudscribe.Core.Models.MultiTenantMode.FolderName || string.IsNullOrEmpty(ctx.Tenant.SiteFolderName))
                 {
                     builder.UseStatusCodePagesWithReExecute("/Home/Error/{0}");
                 }
@@ -205,6 +204,9 @@ namespace OPServer
                 {
                     builder.UseStatusCodePagesWithReExecute("/" + ctx.Tenant.SiteFolderName + "/Home/Error/{0}");
                 }
+
+                // resolve static files from wwwroot folders within themes and within sitefiles
+                builder.UseSiteAndThemeStaticFiles(loggerFactory, multiTenantOptions, ctx.Tenant);
 
                 builder.UseCloudscribeCoreDefaultAuthentication(
                     loggerFactory,
