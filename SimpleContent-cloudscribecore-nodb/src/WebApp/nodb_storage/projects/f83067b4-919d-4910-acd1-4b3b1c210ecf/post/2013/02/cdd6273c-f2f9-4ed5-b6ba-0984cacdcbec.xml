@@ -2,11 +2,15 @@
 <post>
   <title>Foo Radley</title>
   <slug>foo-radley</slug>
+  <correlationkey />
   <author>Joe Audette</author>
   <pubDate>2013-02-14T02:23:00.0000000Z</pubDate>
-  <lastModified>2016-09-03T13:26:31.1857002Z</lastModified>
+  <lastModified>2017-05-15T16:35:29.0141094Z</lastModified>
   <excerpt>do the meta boogie</excerpt>
-  <content>whats up doc&lt;br /&gt;&lt;img src="/s1/media/images/7b138fa7-54bc-4676-8b99-8fa71f720a9a.jpeg" alt="" /&gt;&lt;br /&gt;another day in paradise&lt;br /&gt;</content>
+  <content>&lt;p&gt;whats up doc&lt;br /&gt;
+&lt;img alt="" src="/media/images/feet2-ws.jpg" style="height:412px; width:550px" /&gt;&lt;br /&gt;
+another day in paradise&lt;/p&gt;
+</content>
   <ispublished>true</ispublished>
   <categories>
     <category>boo</category>

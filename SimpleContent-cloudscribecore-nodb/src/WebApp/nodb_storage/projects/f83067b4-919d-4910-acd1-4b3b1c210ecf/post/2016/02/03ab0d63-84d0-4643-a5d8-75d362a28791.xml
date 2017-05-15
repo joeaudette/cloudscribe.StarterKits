@@ -1,12 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-16"?>
 <post>
   <title>Once Upon a Time</title>
   <slug>once-upon-a-time</slug>
+  <correlationkey />
   <author>Joe Audette</author>
   <pubDate>2016-02-27T20:02:00.0000000Z</pubDate>
-  <lastModified>2016-03-14T15:41:38.4526029Z</lastModified>
+  <lastModified>2017-05-15T16:28:12.7087832Z</lastModified>
   <excerpt>where did my meta go</excerpt>
-  <content>once upon a time at the beach&lt;br /&gt;&lt;img src="/s1/media/images/c5d99d17-062e-46bf-96a9-faa62d133446.jpeg" alt="" /&gt;&lt;br /&gt;there was a man named foo&lt;br /&gt;</content>
+  <content>&lt;p&gt;once upon a time at the beach&lt;br /&gt;
+&lt;img alt="" src="/media/images/beach1-ws.jpeg" style="height:412px; width:550px" /&gt;&lt;br /&gt;
+there was a man named foo&lt;/p&gt;
+</content>
   <ispublished>true</ispublished>
   <categories>
     <category>foo</category>

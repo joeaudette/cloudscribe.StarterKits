@@ -1,12 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-16"?>
 <post>
   <title>The Journey Begins</title>
   <slug>the-journey-begins</slug>
+  <correlationkey />
   <author>Joe Audette</author>
   <pubDate>2016-02-22T20:13:00.0000000Z</pubDate>
-  <lastModified>2016-03-20T16:48:06.9911103Z</lastModified>
+  <lastModified>2017-05-15T16:39:29.2371242Z</lastModified>
   <excerpt>a strange band of guests appeared</excerpt>
-  <content>a strange band of guests appeared at my hobbit home&lt;br /&gt;&lt;br /&gt;&lt;img src="/s2/media/images/e4ded68e-95a4-4404-9216-283b0f2bec19.jpeg" alt="" /&gt;&lt;br /&gt;more later&lt;br /&gt;</content>
+  <content>&lt;p&gt;a strange band of guests appeared at my hobbit home&lt;br /&gt;
+&lt;br /&gt;
+&lt;img alt="" src="/two/media/images/goldfish-ws.jpeg" style="height:412px; width:550px" /&gt;&lt;br /&gt;
+more later&lt;/p&gt;
+</content>
   <ispublished>true</ispublished>
   <categories>
     <category>elves</category>

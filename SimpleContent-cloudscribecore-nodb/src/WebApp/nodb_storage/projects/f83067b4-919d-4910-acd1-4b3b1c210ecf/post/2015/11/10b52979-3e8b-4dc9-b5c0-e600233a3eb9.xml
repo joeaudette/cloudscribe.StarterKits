@@ -1,12 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-16"?>
 <post>
   <title>New Day Again</title>
   <slug>new-day-again</slug>
+  <correlationkey />
   <author>Joe Audette</author>
   <pubDate>2015-11-19T22:32:00.0000000Z</pubDate>
-  <lastModified>2016-03-14T15:39:07.6337207Z</lastModified>
+  <lastModified>2017-05-15T16:33:41.6367362Z</lastModified>
   <excerpt>new meta</excerpt>
-  <content>this is the new day content edited&lt;br /&gt;&lt;img src="/s1/media/images/82c2b4ad-078e-4e84-bc66-601015dfabc1.jpeg" alt="" /&gt;&lt;br /&gt;nice patio&lt;br /&gt;</content>
+  <content>&lt;p&gt;this is the new day content edited&lt;br /&gt;
+&lt;img alt="" src="/media/images/hot-tub1-ws.jpeg" style="height:412px; width:550px" /&gt;&lt;br /&gt;
+nice patio&lt;/p&gt;
+</content>
   <ispublished>true</ispublished>
   <categories>
     <category>vacation</category>
