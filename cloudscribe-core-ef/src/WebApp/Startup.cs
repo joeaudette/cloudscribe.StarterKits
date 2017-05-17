@@ -178,11 +178,11 @@ namespace WebApp
                 // custom 404 and error page - this preserves the status code (ie 404)
                 if (multiTenantOptions.Mode != cloudscribe.Core.Models.MultiTenantMode.FolderName || string.IsNullOrEmpty(ctx.Tenant.SiteFolderName))
                 {
-                    builder.UseStatusCodePagesWithReExecute("/Home/Error/{0}");
+                    builder.UseStatusCodePagesWithReExecute("/home/error/{0}");
                 }
                 else
                 {
-                    builder.UseStatusCodePagesWithReExecute("/" + ctx.Tenant.SiteFolderName + "/Home/Error/{0}");
+                    builder.UseStatusCodePagesWithReExecute("/" + ctx.Tenant.SiteFolderName + "/home/error/{0}");
                 }
 
                 builder.UseSiteAndThemeStaticFiles(loggerFactory, multiTenantOptions, ctx.Tenant);
@@ -213,6 +213,13 @@ namespace WebApp
             {  
                 if (useFolders)
                 {
+					routes.MapRoute(
+                       name: "foldererrorhandler",
+                       template: "{sitefolder}/home/error/{statusCode}",
+                       defaults: new { controller = "Home", action = "Error" },
+                       constraints: new { name = new cloudscribe.Core.Web.Components.SiteFolderRouteConstraint() }
+                    );
+					
                     routes.MapRoute(
                         name: "folderdefault",
                         template: "{sitefolder}/{controller}/{action}/{id?}",
