@@ -15,7 +15,7 @@ If you have questions or just want to be social, say hello in our gitter chat ro
 
 ## Prerequisites
 
-[Visual Studio 2015 Update 3](https://www.visualstudio.com/en-us/downloads) or newer and [ASP.NET Core 1.0 with Preview Tooling](https://dot.net/)
+[Visual Studio 2017](https://www.visualstudio.com/en-us/downloads) or VSCode and [ASP.NET Core 1.1.x](https://dot.net/)
 
 ## Running the Sample simpleauthnodb.sln
 
