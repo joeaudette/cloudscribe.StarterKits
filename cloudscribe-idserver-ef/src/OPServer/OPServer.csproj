@@ -38,7 +38,6 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.*" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="1.1.*" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.*" />
-    <PackageReference Include="cloudscribe.Core.Identity" Version="1.1.0-*" />
     <PackageReference Include="cloudscribe.Core.Storage.EFCore.MSSQL" Version="1.1.0-*" />
     <PackageReference Include="cloudscribe.Core.Web" Version="1.1.0-*" />
     <PackageReference Include="cloudscribe.Logging.EFCore.MSSQL" Version="1.1.*" />

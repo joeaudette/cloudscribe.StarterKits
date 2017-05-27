@@ -34,6 +34,8 @@ namespace WebApp
         public IHostingEnvironment environment { get; set; }
         public IConfigurationRoot Configuration { get; }
 
+        public bool SslIsAvailable { get; set; }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -97,10 +99,10 @@ namespace WebApp
                 //}));
             });
 
-            var useSsl = Configuration.GetValue<bool>("AppSettings:UseSsl");
+            SslIsAvailable = Configuration.GetValue<bool>("AppSettings:UseSsl");
             services.Configure<MvcOptions>(options =>
             {
-                if (useSsl)
+                if (SslIsAvailable)
                 {
                     options.Filters.Add(new RequireHttpsAttribute());
                 }
@@ -184,8 +186,11 @@ namespace WebApp
                 builder.UseCloudscribeCoreDefaultAuthentication(
                     loggerFactory,
                     multiTenantOptions,
-                    ctx.Tenant);
+                    ctx.Tenant,
+                    SslIsAvailable);
             });
+
+            app.UseCloudscribeEnforceSiteRulesMiddleware();
 
             UseMvc(app, multiTenantOptions.Mode == cloudscribe.Core.Models.MultiTenantMode.FolderName);
 

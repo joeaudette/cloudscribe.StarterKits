@@ -19,7 +19,7 @@ If you have questions or just want to be social, say hello in our gitter chat ro
 
 ## Running the Sample simpleauthnodb.sln
 
-If you launch it in Visual Studio 2015 with IIS Express it will have a single tenant running at localhost:52472. You can also run it with 2 tenants enabled. You can also run both configured tenants by opening a command window in the root of the WebApp project and execute the command:
+If you launch it in Visual Studio with IIS Express it will have a single tenant running at localhost:52472. You can also run it with 2 tenants enabled. You can also run both configured tenants by opening a command window in the root of the WebApp project and execute the command:
 
     dotnet run
 	

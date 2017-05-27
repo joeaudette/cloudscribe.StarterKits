@@ -35,6 +35,7 @@ namespace OPServer
         public IHostingEnvironment environment { get; set; }
 
         public IConfigurationRoot Configuration { get; }
+        public bool SslIsAvailable { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -119,10 +120,10 @@ namespace OPServer
             });
 
             // for production be sure to use ssl
-            var useSsl = Configuration.GetValue<bool>("AppSettings:UseSsl");
+            SslIsAvailable = Configuration.GetValue<bool>("AppSettings:UseSsl");
             services.Configure<MvcOptions>(options =>
             {
-                if (useSsl)
+                if (SslIsAvailable)
                 {
                     options.Filters.Add(new RequireHttpsAttribute());
                 }
@@ -205,7 +206,8 @@ namespace OPServer
                 builder.UseCloudscribeCoreDefaultAuthentication(
                     loggerFactory,
                     multiTenantOptions,
-                    ctx.Tenant);
+                    ctx.Tenant,
+                    SslIsAvailable);
 
                 // to make this multi tenant for folders
                 // using a fork of IdentityServer4 and hoping to get changes so we don't need a fork
@@ -229,6 +231,8 @@ namespace OPServer
                 //});
 
             });
+
+            app.UseCloudscribeEnforceSiteRulesMiddleware();
 
             UseMvc(app, multiTenantOptions.Mode == cloudscribe.Core.Models.MultiTenantMode.FolderName);
 
