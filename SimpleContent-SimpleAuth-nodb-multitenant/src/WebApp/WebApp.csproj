@@ -16,6 +16,19 @@
     </None>
     <Content Remove="nodb_storage\**\*" CopyToPublishDirectory="Never" />
     <Content Include="nodb_storage\**\*" CopyToPublishDirectory="Never" />
+
+    <Content Remove="wwwroot\lib\**\*" CopyToPublishDirectory="Never" />
+    <Content Remove="bower.json" CopyToPublishDirectory="Never" />
+    <Content Remove="bundleconfig.json" CopyToPublishDirectory="Never" />
+    <Content Remove="appsettings.dev.json" CopyToPublishDirectory="Never" />
+
+    <Content Include="wwwroot\lib\**\*" CopyToPublishDirectory="Never" />
+    <Content Include="bower.json" CopyToPublishDirectory="Never" />
+    <Content Include="bundleconfig.json" CopyToPublishDirectory="Never" />
+    <Content Include="appsettings.dev.json" CopyToPublishDirectory="Never" />
+
+    
+    
   </ItemGroup>
 
   <ItemGroup>

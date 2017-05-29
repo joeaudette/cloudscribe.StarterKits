@@ -15,6 +15,19 @@
     <None Update="wwwroot\**\*;navigation.xml">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
+    
+    <Content Remove="wwwroot\lib\**\*" CopyToPublishDirectory="Never" />
+    <Content Remove="bower.json" CopyToPublishDirectory="Never" />
+    <Content Remove="bundleconfig.json" CopyToPublishDirectory="Never" />
+    <Content Remove="appsettings.dev.json" CopyToPublishDirectory="Never" />
+
+    <Content Include="wwwroot\lib\**\*" CopyToPublishDirectory="Never" />
+    <Content Include="bower.json" CopyToPublishDirectory="Never" />
+    <Content Include="bundleconfig.json" CopyToPublishDirectory="Never" />
+    <Content Include="appsettings.dev.json" CopyToPublishDirectory="Never" />
+
+    <Content Include="**\sitefiles\**\wwwroot\**" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="SharedThemes\**\wwwroot\**" CopyToPublishDirectory="PreserveNewest" />
   </ItemGroup>
 
   <ItemGroup>

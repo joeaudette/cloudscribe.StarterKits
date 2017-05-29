@@ -54,6 +54,10 @@ This sample uses [cloudscribe Core](https://github.com/joeaudette/cloudscribe) f
 
 This sample is using a fork of [IdentityServer4](https://github.com/joeaudette/IdentityServer4) with minimal changes that were needed to support folder tenants of the OP Server. I am hoping to get changes into the main IdentityServer4 to support this scenario, this fork is hopefully a temporary solution.
 
+### Publishing
+
+Note that the .csproj settings are configured to exclude the nodb_storage folder from publishing. That folder is where the data is stored, so we generally don't want to overwrite production data when we redeploy. However for the first deployment you should add this folder manually. However, I don't really recommend using NoDb storage for an identity server endpoint, you would be better off using a database for that kind of usage. This starter kit is mainly to provide a working example with sample data, and NoDb made it easy to do that since the data is just files on disk.
+
 [![Join the chat at https://gitter.im/joeaudette/cloudscribe](https://badges.gitter.im/joeaudette/cloudscribe.svg)](https://gitter.im/joeaudette/cloudscribe?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 

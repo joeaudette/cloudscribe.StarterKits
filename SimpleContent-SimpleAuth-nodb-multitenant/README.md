@@ -31,6 +31,8 @@ You should also be able to [create and edit blog posts and pages using the web b
 
 If you decide to use this sample to build your site you should of course change the user name and password in the app-tenant-users.json file
 
+## Publishing
 
+Note that the .csproj settings are configured to exclude the nodb_storage folder from publishing. That folder is where the data is stored, so we generally don't want to overwrite production data when we redeploy. However for the first deployment you should add this folder manually.
 
 
