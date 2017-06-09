@@ -90,17 +90,10 @@ namespace WebApp
             services.AddMvc()
                 .AddRazorOptions(options =>
                 {
-                    // if you download the cloudscribe.Web.Navigation Views and put them in your views folder
-                    // then you don't need this line and can customize the views
+                    options.AddCloudscribeCommonEmbeddedViews();  
                     options.AddEmbeddedViewsForNavigation();
-
-
                     options.AddEmbeddedViewsForSimpleAuth();
-
-                    // If you download and install the views below your view folder you don't need this method and you can customize the views.
-                    // You can get the views from https://github.com/joeaudette/cloudscribe.SimpleContent/tree/master/src/cloudscribe.SimpleContent.Blog.Web/Views
                     options.AddBootstrap3EmbeddedViewsForSimpleContent();
-
                     options.AddBootstrap3EmbeddedViewsForFileManager();
 
                 });
@@ -128,6 +121,8 @@ namespace WebApp
             }
 
             app.UseStaticFiles();
+
+            app.UseCloudscribeCommonStaticFiles();
 
             // custom 404 and error page - this preserves the status code (ie 404)
             app.UseStatusCodePagesWithReExecute("/Home/Error/{0}");

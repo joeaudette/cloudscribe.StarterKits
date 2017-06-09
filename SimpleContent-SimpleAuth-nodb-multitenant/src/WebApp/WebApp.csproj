@@ -45,6 +45,7 @@
     <PackageReference Include="SaasKit.Multitenancy" Version="1.1.4" />
     <PackageReference Include="cloudscribe.Web.Navigation" Version="1.2.*" />
     <PackageReference Include="cloudscribe.Web.Pagination" Version="1.1.*" />
+    <PackageReference Include="cloudscribe.Web.Common" Version="1.3.*" />
     <PackageReference Include="cloudscribe.Web.SimpleAuth" Version="1.1.*" />
     <PackageReference Include="cloudscribe.SimpleContent.Models" Version="1.1.1-*" />
     <PackageReference Include="cloudscribe.SimpleContent.Storage.NoDb" Version="1.1.1-*" />

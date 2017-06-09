@@ -145,9 +145,10 @@ namespace OPServer
                 .AddRazorOptions(options =>
                 {
                     options.AddCloudscribeViewLocationFormats();
-
+                    options.AddCloudscribeCommonEmbeddedViews();
                     options.AddEmbeddedViewsForNavigation();
                     options.AddEmbeddedBootstrap3ViewsForCloudscribeCore();
+                    options.AddBootstrap3EmbeddedViewsForFileManager();
                     options.AddEmbeddedViewsForCloudscribeLogging();
                     options.AddEmbeddedBootstrap3ViewsForCloudscribeCoreIdentityServerIntegration();
 
@@ -189,6 +190,8 @@ namespace OPServer
             //app.UseSession();
 
             app.UseRequestLocalization(localizationOptionsAccessor.Value);
+
+            app.UseCloudscribeCommonStaticFiles();
 
             app.UseMultitenancy<cloudscribe.Core.Models.SiteContext>();
 
@@ -252,6 +255,7 @@ namespace OPServer
         {
             app.UseMvc(routes =>
             {
+                
                 if (useFolders)
                 {
 					routes.MapRoute(
@@ -293,6 +297,20 @@ namespace OPServer
             {
                 options.AddCloudscribeCoreDefaultPolicies();
                 options.AddCloudscribeLoggingDefaultPolicy();
+
+                options.AddPolicy(
+                    "FileManagerPolicy",
+                    authBuilder =>
+                    {
+                        authBuilder.RequireRole("Administrators", "Content Administrators");
+                    });
+
+                options.AddPolicy(
+                    "FileManagerDeletePolicy",
+                    authBuilder =>
+                    {
+                        authBuilder.RequireRole("Administrators", "Content Administrators");
+                    });
 
                 // add other policies here 
                 options.AddPolicy(
