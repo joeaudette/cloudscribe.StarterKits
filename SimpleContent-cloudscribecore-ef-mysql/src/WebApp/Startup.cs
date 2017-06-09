@@ -248,8 +248,8 @@ namespace WebApp
                 }
 
                 routes.AddBlogRoutesForSimpleContent();
-                routes.AddCkEditorRoutesForSimpleContent();
-                routes.AddCloudscribeFileManagerRoutesForSimpleContent();
+                routes.AddSimpleContentStaticResourceRoutes();
+                routes.AddCloudscribeFileManagerRoutes();
 
                 if (useFolders)
                 {

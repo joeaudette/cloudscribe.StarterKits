@@ -220,8 +220,9 @@ namespace WebApp
         private void UseMvc(IApplicationBuilder app, bool useFolders)
         {
             app.UseMvc(routes =>
-            {  
-			    
+            {
+                routes.AddCloudscribeFileManagerRoutes();
+
                 if (useFolders)
                 {
 					routes.MapRoute(

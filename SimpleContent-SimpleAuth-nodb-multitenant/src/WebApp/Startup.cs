@@ -148,7 +148,7 @@ namespace WebApp
 
             app.UseMvc(routes =>
             {
-                routes.AddCkEditorRoutesForSimpleContent();
+                routes.AddSimpleContentStaticResourceRoutes();
                 routes.AddCloudscribeFileManagerRoutes();
                 routes.AddStandardRoutesForSimpleContent();
 

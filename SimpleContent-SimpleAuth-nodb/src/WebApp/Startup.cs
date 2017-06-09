@@ -144,7 +144,7 @@ namespace WebApp
 
             app.UseMvc(routes =>
             {
-                routes.AddCkEditorRoutesForSimpleContent();
+                routes.AddSimpleContentStaticResourceRoutes();
                 routes.AddCloudscribeFileManagerRoutes();
                 routes.AddStandardRoutesForSimpleContent();
                 // the Pages feature routes by default would take over as the defualt route
