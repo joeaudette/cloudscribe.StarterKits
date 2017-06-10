@@ -181,7 +181,7 @@ namespace OPServer
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/oops/Error");
             }
 
             app.UseForwardedHeaders();
@@ -190,58 +190,14 @@ namespace OPServer
             //app.UseSession();
 
             app.UseRequestLocalization(localizationOptionsAccessor.Value);
-
-            app.UseCloudscribeCommonStaticFiles();
-
-            app.UseMultitenancy<cloudscribe.Core.Models.SiteContext>();
-
+            
             var multiTenantOptions = multiTenantOptionsAccessor.Value;
 
-            app.UsePerTenant<cloudscribe.Core.Models.SiteContext>((ctx, builder) =>
-            {
-                // custom 404 and error page - this preserves the status code (ie 404)
-                if (multiTenantOptions.Mode != cloudscribe.Core.Models.MultiTenantMode.FolderName || string.IsNullOrEmpty(ctx.Tenant.SiteFolderName))
-                {
-                    builder.UseStatusCodePagesWithReExecute("/home/error/{0}");
-                }
-                else
-                {
-                    builder.UseStatusCodePagesWithReExecute("/" + ctx.Tenant.SiteFolderName + "/home/error/{0}");
-                }
-
-                // resolve static files from wwwroot folders within themes and within sitefiles
-                builder.UseSiteAndThemeStaticFiles(loggerFactory, multiTenantOptions, ctx.Tenant);
-
-                builder.UseCloudscribeCoreDefaultAuthentication(
+            app.UseCloudscribeCore(
                     loggerFactory,
                     multiTenantOptions,
-                    ctx.Tenant,
-                    SslIsAvailable);
-
-                // to make this multi tenant for folders
-                // using a fork of IdentityServer4 and hoping to get changes so we don't need a fork
-                // https://github.com/IdentityServer/IdentityServer4/issues/19
-
-                builder.UseIdentityServer();
-
-                // this sets up the authentication for apis within this application endpoint
-                // ie apis that are hosted in the same web app endpoint with the authority server
-                // this is not needed here if you are only using separate api endpoints
-                // it is needed in the startup of those separate endpoints
-                builder.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
-                {
-                    Authority = "https://localhost:51408",
-                    // using the site aliasid as the scope so each tenant has a different scope
-                    // you can view the aliasid from site settings
-                    // clients must be configured with the scope to have access to the apis for the tenant
-                    ApiName = ctx.Tenant.AliasId,
-
-                    RequireHttpsMetadata = false
-                });
-
-            });
-
-            app.UseCloudscribeEnforceSiteRulesMiddleware();
+                    SslIsAvailable,
+                    IdentityServerIntegratorFunc);
 
             UseMvc(app, multiTenantOptions.Mode == cloudscribe.Core.Models.MultiTenantMode.FolderName);
 
@@ -261,8 +217,8 @@ namespace OPServer
                 {
 					routes.MapRoute(
                        name: "foldererrorhandler",
-                       template: "{sitefolder}/home/error/{statusCode}",
-                       defaults: new { controller = "Home", action = "Error" },
+                       template: "{sitefolder}/oops/error/{statusCode?}",
+                       defaults: new { controller = "Oops", action = "Error" },
                        constraints: new { name = new cloudscribe.Core.Web.Components.SiteFolderRouteConstraint() }
                     );
 					
@@ -277,7 +233,8 @@ namespace OPServer
 
                 routes.MapRoute(
                     name: "errorhandler",
-                    template: "home/error/{statusCode}"
+                    template: "oops/error/{statusCode?}",
+                    defaults: new { controller = "Oops", action = "Error" }
                     );
 
                 routes.MapRoute(
@@ -288,6 +245,34 @@ namespace OPServer
 
 
             });
+        }
+
+        // this Func is passed optionally in to app.UseCloudscribeCore
+        // to wire up identity server integration at the right point in the middleware pipeline
+        private bool IdentityServerIntegratorFunc(IApplicationBuilder builder, cloudscribe.Core.Models.ISiteContext tenant)
+        {
+            // to make this multi tenant for folders
+            // using a fork of IdentityServer4 and hoping to get changes so we don't need a fork
+            // https://github.com/IdentityServer/IdentityServer4/issues/19
+
+            builder.UseIdentityServer();
+
+            // this sets up the authentication for apis within this application endpoint
+            // ie apis that are hosted in the same web app endpoint with the authority server
+            // this is not needed here if you are only using separate api endpoints
+            // it is needed in the startup of those separate endpoints
+            //builder.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
+            //{
+            //    Authority = "https://localhost:51408",
+            //    // using the site aliasid as the scope so each tenant has a different scope
+            //    // you can view the aliasid from site settings
+            //    // clients must be configured with the scope to have access to the apis for the tenant
+            //    ApiName = tenant.AliasId,
+
+            //    RequireHttpsMetadata = SslIsAvailable
+            //});
+
+            return true;
         }
 
         private void ConfigureAuthPolicy(IServiceCollection services)

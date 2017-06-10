@@ -36,18 +36,6 @@ namespace WebApp.Controllers
         //    return View();
         //}
 
-        public IActionResult Error(int statusCode)
-        {
-            if (statusCode == 404)
-            {
-                var statusFeature = HttpContext.Features.Get<IStatusCodeReExecuteFeature>();
-                if (statusFeature != null)
-                {
-                    log.LogWarning("handled 404 for url: {OriginalPath}", statusFeature.OriginalPath);
-                }
-
-            }
-            return View(statusCode);
-        }
+       
     }
 }
