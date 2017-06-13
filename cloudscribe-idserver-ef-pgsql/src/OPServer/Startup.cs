@@ -146,11 +146,11 @@ namespace OPServer
                 {
                     options.AddCloudscribeViewLocationFormats();
                     options.AddCloudscribeCommonEmbeddedViews();
-                    options.AddEmbeddedViewsForNavigation();
-                    options.AddEmbeddedBootstrap3ViewsForCloudscribeCore();
+                    options.AddCloudscribeNavigationBootstrap3Views();
+                    options.AddCloudscribeCoreBootstrap3Views();
                     options.AddBootstrap3EmbeddedViewsForFileManager();
                     options.AddEmbeddedViewsForCloudscribeLogging();
-                    options.AddEmbeddedBootstrap3ViewsForCloudscribeCoreIdentityServerIntegration();
+                    options.AddCloudscribeCoreIdentityServerIntegrationBootstrap3Views();
 
                     options.ViewLocationExpanders.Add(new cloudscribe.Core.Web.Components.SiteViewLocationExpander());
                 });

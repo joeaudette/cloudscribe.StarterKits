@@ -32,7 +32,7 @@
 
   <ItemGroup>
     <PackageReference Include="cloudscribe.Core.Storage.NoDb" Version="1.1.0-*" />
-    <PackageReference Include="cloudscribe.Core.Web" Version="1.1.0-*" />
+    <PackageReference Include="cloudscribe.Core.Web.Mvc" Version="1.0.0-*" />
     <PackageReference Include="cloudscribe.Logging.NoDb" Version="1.1.*" />
     <PackageReference Include="cloudscribe.Logging.Web" Version="1.1.*" />
     <PackageReference Include="cloudscribe.Web.Navigation" Version="1.2.*" />

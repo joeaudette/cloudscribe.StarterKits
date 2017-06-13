@@ -128,8 +128,8 @@ namespace WebApp
                 {
                     options.AddCloudscribeViewLocationFormats();
                     options.AddCloudscribeCommonEmbeddedViews();
-                    options.AddEmbeddedViewsForNavigation();
-                    options.AddEmbeddedBootstrap3ViewsForCloudscribeCore();
+                    options.AddCloudscribeNavigationBootstrap3Views();
+                    options.AddCloudscribeCoreBootstrap3Views();
                     options.AddBootstrap3EmbeddedViewsForFileManager();
                     options.AddEmbeddedViewsForCloudscribeLogging();
                     

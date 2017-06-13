@@ -50,7 +50,7 @@
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="1.1.*" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.*" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="1.1.*" />
-    <PackageReference Include="cloudscribe.Core.Web" Version="1.1.0-*" />
+    <PackageReference Include="cloudscribe.Core.Web.Mvc" Version="1.0.0-*" />
     <PackageReference Include="cloudscribe.Core.Storage.EFCore.MySql" Version="1.1.0-*" />
     <PackageReference Include="cloudscribe.Logging.EFCore.MySql" Version="1.1.*" />
     <PackageReference Include="cloudscribe.Logging.Web" Version="1.1.*" />
