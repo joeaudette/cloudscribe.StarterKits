@@ -81,6 +81,11 @@ namespace WebApp
             services.AddSimpleContentRssSyndiction();
             services.AddCloudscribeFileManagerIntegration(Configuration);
 
+            // optional but recommended if you need localization 
+            // uncomment to use cloudscribe.Web.localization https://github.com/joeaudette/cloudscribe.Web.Localization
+            //services.Configure<GlobalResourceOptions>(Configuration.GetSection("GlobalResourceOptions"));
+            //services.AddSingleton<IStringLocalizerFactory, GlobalResourceManagerStringLocalizerFactory>();
+
             services.AddLocalization(options => options.ResourcesPath = "GlobalResources");
 
             services.Configure<RequestLocalizationOptions>(options =>
@@ -149,13 +154,13 @@ namespace WebApp
                 .AddRazorOptions(options =>
                 {
                     options.AddCloudscribeViewLocationFormats();
+
                     options.AddCloudscribeCommonEmbeddedViews();
-                    options.AddEmbeddedViewsForNavigation();
-                    options.AddEmbeddedBootstrap3ViewsForCloudscribeCore();
-                    options.AddEmbeddedViewsForCloudscribeLogging();
-                    options.AddBootstrap3EmbeddedViewsForSimpleContent();
-                    options.AddEmbeddedViewsForCloudscribeCoreSimpleContentIntegration();
-                    options.AddBootstrap3EmbeddedViewsForFileManager();
+                    options.AddCloudscribeNavigationBootstrap3Views();
+                    options.AddCloudscribeCoreBootstrap3Views();
+                    options.AddCloudscribeSimpleContentBootstrap3Views();
+                    options.AddCloudscribeFileManagerBootstrap3Views();
+                    options.AddCloudscribeLoggingBootstrap3Views();
 
                     options.ViewLocationExpanders.Add(new cloudscribe.Core.Web.Components.SiteViewLocationExpander());
                 })

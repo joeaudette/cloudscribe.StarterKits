@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.DataProtection;
 using System.IO;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 
 namespace OPServer
 {
@@ -86,7 +87,12 @@ namespace OPServer
 
             services.AddCloudscribeLogging();
             services.AddCloudscribeCore(Configuration);
-            
+
+            // optional but recommended if you need localization 
+            // uncomment to use cloudscribe.Web.localization https://github.com/joeaudette/cloudscribe.Web.Localization
+            //services.Configure<GlobalResourceOptions>(Configuration.GetSection("GlobalResourceOptions"));
+            //services.AddSingleton<IStringLocalizerFactory, GlobalResourceManagerStringLocalizerFactory>();
+
             services.AddLocalization(options => options.ResourcesPath = "GlobalResources");
 
             services.Configure<RequestLocalizationOptions>(options =>
@@ -148,8 +154,8 @@ namespace OPServer
                     options.AddCloudscribeCommonEmbeddedViews();
                     options.AddCloudscribeNavigationBootstrap3Views();
                     options.AddCloudscribeCoreBootstrap3Views();
-                    options.AddBootstrap3EmbeddedViewsForFileManager();
-                    options.AddEmbeddedViewsForCloudscribeLogging();
+                    options.AddCloudscribeFileManagerBootstrap3Views();
+                    options.AddCloudscribeLoggingBootstrap3Views();
                     options.AddCloudscribeCoreIdentityServerIntegrationBootstrap3Views();
 
                     options.ViewLocationExpanders.Add(new cloudscribe.Core.Web.Components.SiteViewLocationExpander());

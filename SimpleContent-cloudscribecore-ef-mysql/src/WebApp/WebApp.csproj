@@ -29,6 +29,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="cloudscribe.Core.Web.Mvc" Version="1.0.0-*" />
+    <PackageReference Include="cloudscribe.Core.Storage.EFCore.MySql" Version="1.1.0-*" />
+    <PackageReference Include="cloudscribe.Core.SimpleContent.Mvc" Version="1.0.0-*" />
+    <PackageReference Include="cloudscribe.SimpleContent.Web.Mvc" Version="1.0.0-*" />
+    <PackageReference Include="cloudscribe.SimpleContent.Storage.EFCore.MySQL" Version="1.1.1-*" />
+    <PackageReference Include="cloudscribe.SimpleContent.MetaWeblog" Version="1.1.1-*" />
+    <PackageReference Include="cloudscribe.SimpleContent.Syndication" Version="1.1.1-*" />
+    <PackageReference Include="cloudscribe.Syndication.Web" Version="1.1.*" />
+    <PackageReference Include="cloudscribe.Logging.Web" Version="1.1.*" />
+    <PackageReference Include="cloudscribe.Logging.EFCore.MySql" Version="1.1.*" />
+    <PackageReference Include="cloudscribe.Web.Localization" Version="1.2.*" />
+    
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="1.1.*" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="1.1.*" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="1.1.*" />
@@ -48,19 +60,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.*" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="1.1.*" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.*" />
-    <PackageReference Include="cloudscribe.Core.Web" Version="1.1.0-*" />
-    <PackageReference Include="cloudscribe.Core.Storage.EFCore.MySql" Version="1.1.0-*" />
-    <PackageReference Include="cloudscribe.Logging.EFCore.MySql" Version="1.1.*" />
-    <PackageReference Include="cloudscribe.Logging.Web" Version="1.1.*" />
-    <PackageReference Include="cloudscribe.Web.Navigation" Version="1.2.*" />
-    <PackageReference Include="cloudscribe.Web.Pagination" Version="1.1.*" />
-    <PackageReference Include="cloudscribe.SimpleContent.Storage.EFCore.MySQL" Version="1.1.1-*" />
-    <PackageReference Include="cloudscribe.SimpleContent.MetaWeblog" Version="1.1.1-*" />
-    <PackageReference Include="cloudscribe.SimpleContent.Web" Version="1.1.1-*" />
-    <PackageReference Include="cloudscribe.SimpleContent.Syndication" Version="1.1.1-*" />
-    <PackageReference Include="cloudscribe.Syndication.Web" Version="1.1.*" />
-    <PackageReference Include="cloudscribe.Core.SimpleContent.Integration" Version="1.1.1-*" />
-    <PackageReference Include="SaasKit.Multitenancy" Version="1.1.4" />
+    
     <PackageReference Include="Microsoft.AspNetCore.DataProtection" Version="1.1.*" />
     <PackageReference Include="Microsoft.AspNetCore.Session" Version="1.1.*" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.Abstractions" Version="1.1.*" />

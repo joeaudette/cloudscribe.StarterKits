@@ -8,7 +8,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using cloudscribe.SimpleContent.Models;
-using cloudscribe.FileManager.Web;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Http;
@@ -58,7 +57,7 @@ namespace WebApp
             // to use a different authentication system you would implement and plugin your own IProjectSecurityResolver
             services.AddScoped<IProjectSecurityResolver, cloudscribe.SimpleContent.Security.SimpleAuth.ProjectSecurityResolver>();
 
-            services.AddCloudscribeCommmon();
+            services.AddCloudscribeCommmon(Configuration);
             services.AddSimpleContent();
             services.AddMetaWeblogForSimpleContent(Configuration.GetSection("MetaWeblogApiOptions"));
             services.AddSimpleContentRssSyndiction();
@@ -91,10 +90,10 @@ namespace WebApp
                 .AddRazorOptions(options =>
                 {
                     options.AddCloudscribeCommonEmbeddedViews();  
-                    options.AddEmbeddedViewsForNavigation();
+                    options.AddCloudscribeNavigationBootstrap3Views();
                     options.AddEmbeddedViewsForSimpleAuth();
-                    options.AddBootstrap3EmbeddedViewsForSimpleContent();
-                    options.AddBootstrap3EmbeddedViewsForFileManager();
+                    options.AddCloudscribeSimpleContentBootstrap3Views();
+                    options.AddCloudscribeFileManagerBootstrap3Views();
 
                 });
         }

@@ -61,7 +61,7 @@ namespace WebApp
             services.Configure<List<ProjectSettings>>(Configuration.GetSection("ContentProjects"));
             services.AddScoped<IProjectSettingsResolver, SiteProjectSettingsResolver>();
             services.AddScoped<IProjectSecurityResolver, cloudscribe.SimpleContent.Security.SimpleAuth.ProjectSecurityResolver>();
-            services.AddCloudscribeCommmon();
+            services.AddCloudscribeCommmon(Configuration);
             services.AddSimpleContent();
             services.AddMetaWeblogForSimpleContent(Configuration.GetSection("MetaWeblogApiOptions"));
             services.AddSimpleContentRssSyndiction();
@@ -95,10 +95,10 @@ namespace WebApp
                 .AddRazorOptions(options =>
                 {
                     options.AddCloudscribeCommonEmbeddedViews();
-                    options.AddEmbeddedViewsForNavigation();
+                    options.AddCloudscribeNavigationBootstrap3Views();
                     options.AddEmbeddedViewsForSimpleAuth();
-                    options.AddBootstrap3EmbeddedViewsForSimpleContent();
-                    options.AddBootstrap3EmbeddedViewsForFileManager();
+                    options.AddCloudscribeSimpleContentBootstrap3Views();
+                    options.AddCloudscribeFileManagerBootstrap3Views();
 
                     options.ViewLocationExpanders.Add(new SiteViewLocationExpander());
                 });
