@@ -29,11 +29,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="cloudscribe.SimpleContent.Web.Mvc" Version="1.0.0-*" />
-    <PackageReference Include="cloudscribe.SimpleContent.Storage.NoDb" Version="1.1.1-*" />
-    <PackageReference Include="cloudscribe.SimpleContent.Security.SimpleAuth" Version="1.1.1-*" />
-    <PackageReference Include="cloudscribe.SimpleContent.MetaWeblog" Version="1.1.1-*" />
-    <PackageReference Include="cloudscribe.SimpleContent.Syndication" Version="1.1.1-*" />
+    <PackageReference Include="cloudscribe.SimpleContent.Web.Mvc" Version="1.0.*" />
+    <PackageReference Include="cloudscribe.SimpleContent.Storage.NoDb" Version="1.1.*" />
+    <PackageReference Include="cloudscribe.SimpleContent.Security.SimpleAuth" Version="1.1.*" />
+    <PackageReference Include="cloudscribe.SimpleContent.MetaWeblog" Version="1.1.*" />
+    <PackageReference Include="cloudscribe.SimpleContent.Syndication" Version="1.1.*" />
     <PackageReference Include="cloudscribe.Syndication.Web" Version="1.1.*" />
    
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="1.1.*" />

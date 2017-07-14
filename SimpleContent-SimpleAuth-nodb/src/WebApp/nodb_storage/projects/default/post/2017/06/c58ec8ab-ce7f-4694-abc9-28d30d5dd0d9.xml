@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-16"?>
+<post>
+  <title>Hello World</title>
+  <slug>hello-world</slug>
+  <correlationkey />
+  <author>Mr Cool!</author>
+  <pubDate>2017-06-19T15:46:00.0000000Z</pubDate>
+  <lastModified>2017-06-19T15:47:12.7187868Z</lastModified>
+  <excerpt>hello</excerpt>
+  <content>&lt;p&gt;hello&lt;/p&gt;
+</content>
+  <ispublished>true</ispublished>
+  <categories></categories>
+  <comments></comments>
+</post>
