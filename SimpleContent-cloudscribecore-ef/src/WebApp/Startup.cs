@@ -258,7 +258,8 @@ namespace WebApp
 
                 routes.MapRoute(
                     name: "def",
-                    template: "{controller}/{action}"
+                    template: "{controller}/{action}",
+                    defaults: new { controller = "Home", action = "Index" }
                     );
 
                 routes.AddDefaultPageRouteForSimpleContent();
