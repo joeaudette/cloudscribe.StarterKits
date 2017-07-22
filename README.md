@@ -32,7 +32,11 @@ To get the big picture of what cloudscribe provides for you see the [Introductio
 
 ## [cloudscribe Core. IdentityServer4, and Entity Framework Core - PostgreSql](https://github.com/joeaudette/cloudscribe.StarterKits/tree/master/cloudscribe-idserver-ef-pgsql)
 
+### Build Status
 
+| Windows  | Linux/Mac |
+| ------------- | ------------- |
+| [![Build status](https://ci.appveyor.com/api/projects/status/jvafvkw4xueq3te4?svg=true)](https://ci.appveyor.com/project/joeaudette/cloudscribe-starterkits)  | [![Build Status](https://travis-ci.org/joeaudette/cloudscribe.StarterKits.svg?branch=master)](https://travis-ci.org/joeaudette/cloudscribe.StarterKits)  |
 
 ## Questions or Feedback?
 
