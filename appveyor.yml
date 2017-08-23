@@ -1,0 +1,74 @@
+image: Visual Studio 2017
+environment:
+  nodejs_version: "6.9.1"
+# Install scripts. (runs after repo cloning)
+install:
+  # Get the latest stable version of Node.js or io.js
+  - ps: Install-Product node $env:nodejs_version
+  - ps: $env:BuildNumber= $env:APPVEYOR_BUILD_NUMBER
+init:
+  - git config --global core.autocrlf true
+build_script:
+  - cd cloudscribe-core-ef
+  - dotnet restore
+  - dotnet build -c Release
+  - cd../
+  - cd cloudscribe-core-ef-mysql
+  - dotnet restore
+  - dotnet build -c Release
+  - cd../
+  - cd cloudscribe-core-ef-pgsql
+  - dotnet restore
+  - dotnet build -c Release
+  - cd../
+  - cd cloudscribe-core-nodb
+  - dotnet restore
+  - dotnet build -c Release
+#  - cd../
+#  - cd cloudscribe-idserver-ef
+#  - cd netcore1
+#  - dotnet restore
+#  - dotnet build -c Release
+#  - cd../
+#  - cd cloudscribe-idserver-ef-mysql
+#  - cd netcore1
+#  - dotnet restore
+#  - dotnet build -c Release
+#  - cd../
+#  - cd cloudscribe-idserver-ef-pgsql
+#  - cd netcore1
+#  - dotnet restore
+#  - dotnet build -c Release
+#  - cd../
+#  - cd cloudscribe-idserver-nodb
+#  - cd netcore1
+#  - dotnet restore
+#  - dotnet build -c Release
+  - cd../
+  - cd SimpleContent-cloudscribecore-ef
+  - dotnet restore
+  - dotnet build -c Release
+  - cd../
+  - cd SimpleContent-cloudscribecore-ef-mysql
+  - dotnet restore
+  - dotnet build -c Release
+  - cd../
+  - cd SimpleContent-cloudscribecore-ef-pgsql
+  - dotnet restore
+  - dotnet build -c Release
+  - cd../
+  - cd SimpleContent-cloudscribecore-nodb
+  - dotnet restore
+  - dotnet build -c Release
+  - cd../
+  - cd SimpleContent-SimpleAuth-nodb
+  - dotnet restore
+  - dotnet build -c Release
+  - cd../
+  - cd SimpleContent-SimpleAuth-nodb-multitenant
+  - dotnet restore
+  - dotnet build -c Release
+test: off
+
+
+  

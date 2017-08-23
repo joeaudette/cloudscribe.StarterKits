@@ -1,0 +1,56 @@
+﻿{
+    "SimpleAuthSettings": {
+        "EnablePasswordHasherUi": "true",
+        "Comment-Recaptcha": "get your recaptcha keys here https://www.google.com/recaptcha/intro/index.html",
+        "RecaptchaPublicKey": "",
+        "RecaptchaPrivateKey": "",
+        "AuthenticationScheme": "application"
+
+    },
+
+    "Users": [
+        {
+            "UserName": "admin",
+            "FYI-Comment": "this hash is a hash of the word admin, to create your own password hash, set EnablePasswordHasherUi as true, and visit /Login/HashPassword",
+            "Password": "AQAAAAEAACcQAAAAEKyu1zRJBNHJUw4r1mJwxgHfvofBmIAZSiG8X1O8dmdBFiQT0183/oqeoo0qGHv/Hw==",
+            "PasswordIsHashed": "true",
+          "Claims": [
+            {
+              "ClaimType": "DisplayName",
+              "ClaimValue": "Mr Cool!"
+            },
+            {
+              "ClaimType": "Email",
+              "ClaimValue": "foo@foo.org"
+            },
+            {
+              "ClaimType": "ContentEditor",
+              "ClaimValue": "default"
+            },
+            {
+              "ClaimType": "Role",
+              "ClaimValue": "Administrators"
+            }
+
+          ]
+        },
+        {
+            "UserName": "guest",
+            "Password": "guest",
+            "PasswordIsHashed": "false",
+            "Claims": [
+                {
+                    "ClaimType": "DisplayName",
+                    "ClaimValue": "Mr Awesome"
+                },
+                {
+                    "ClaimType": "Email",
+                    "ClaimValue": "demo@demo.com"
+                }
+
+            ]
+        }
+    ]
+
+
+}

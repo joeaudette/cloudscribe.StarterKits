@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <MvcRazorCompileOnPublish>true</MvcRazorCompileOnPublish>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <UserSecretsId>aspnet-WebApp-58636384-3D48-4D4C-A394-22BFC514C008</UserSecretsId>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <None Update="wwwroot\**\*;navigation.xml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </None>
+    <Content Remove="nodb_storage\**\*" CopyToPublishDirectory="Never" />
+    <Content Include="nodb_storage\**\*" CopyToPublishDirectory="Never" />
+
+    <Content Remove="wwwroot\lib\**\*" CopyToPublishDirectory="Never" />
+    <Content Remove="bower.json" CopyToPublishDirectory="Never" />
+    <Content Remove="bundleconfig.json" CopyToPublishDirectory="Never" />
+    <Content Remove="appsettings.Development.json" CopyToPublishDirectory="Never" />
+
+    <Content Include="wwwroot\lib\**\*" CopyToPublishDirectory="Never" />
+    <Content Include="bower.json" CopyToPublishDirectory="Never" />
+    <Content Include="bundleconfig.json" CopyToPublishDirectory="Never" />
+    <Content Include="appsettings.Development.json" CopyToPublishDirectory="Never" />
+
+    
+    
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="cloudscribe.SimpleContent.Web.Mvc" Version="2.0.*" />
+    <PackageReference Include="cloudscribe.SimpleContent.Storage.NoDb" Version="2.0.*" />
+    <PackageReference Include="cloudscribe.SimpleContent.Security.SimpleAuth" Version="2.0.*" />
+    <PackageReference Include="cloudscribe.SimpleContent.MetaWeblog" Version="2.0.*" />
+    <PackageReference Include="cloudscribe.SimpleContent.Syndication" Version="2.0.*" />
+    <PackageReference Include="cloudscribe.Syndication.Web" Version="2.0.*" />
+  
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.*" />
+  </ItemGroup>
+
+</Project>
