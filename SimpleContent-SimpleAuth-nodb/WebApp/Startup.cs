@@ -41,7 +41,7 @@ namespace WebApp
                 options.DefaultAuthenticateScheme = "application";
                 options.DefaultChallengeScheme = "application";
             })
-                .AddCookieAuthentication("application", options =>
+                .AddCookie("application", options =>
                 {
                     options.LoginPath = new PathString("/account/login");
 

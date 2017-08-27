@@ -29,19 +29,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="cloudscribe.SimpleContent.Web.Mvc" Version="2.0.0-*" />
-    <PackageReference Include="cloudscribe.SimpleContent.Storage.NoDb" Version="2.0.0-*" />
-    <PackageReference Include="cloudscribe.SimpleContent.Security.SimpleAuth" Version="2.0.0-*" />
-    <PackageReference Include="cloudscribe.SimpleContent.MetaWeblog" Version="2.0.0-*" />
-    <PackageReference Include="cloudscribe.SimpleContent.Syndication" Version="2.0.0-*" />
-    <PackageReference Include="cloudscribe.Syndication.Web" Version="2.0.0-*" />
+    <PackageReference Include="cloudscribe.SimpleContent.Web.Mvc" Version="2.0.*" />
+    <PackageReference Include="cloudscribe.SimpleContent.Storage.NoDb" Version="2.0.*" />
+    <PackageReference Include="cloudscribe.SimpleContent.Security.SimpleAuth" Version="2.0.*" />
+    <PackageReference Include="cloudscribe.SimpleContent.MetaWeblog" Version="2.0.*" />
+    <PackageReference Include="cloudscribe.SimpleContent.Syndication" Version="2.0.*" />
+    <PackageReference Include="cloudscribe.Syndication.Web" Version="2.0.*" />
     <PackageReference Include="SaasKit.Multitenancy" Version="1.1.4" />
   
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0-*" />
   </ItemGroup>
 
   <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0-*" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.*" />
   </ItemGroup>
 
 </Project>

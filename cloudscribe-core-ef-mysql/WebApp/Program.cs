@@ -18,11 +18,12 @@ namespace WebApp
             var host = BuildWebHost(args);
             var loggerFactory = host.Services.GetRequiredService<ILoggerFactory>();
             var env = host.Services.GetRequiredService<IHostingEnvironment>();
+            ConfigureLogging(env, loggerFactory, host.Services);
 
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-                ConfigureLogging(env, loggerFactory, services);
+                
                 try
                 {
                     EnsureDataStorageIsReady(services);
@@ -67,9 +68,7 @@ namespace WebApp
             {
                 minimumLevel = LogLevel.Information;
             }
-
-            var logRepo = serviceProvider.GetService<cloudscribe.Logging.Web.ILogRepository>();
-
+            
             // a customizable filter for logging
             // add exclusions to remove noise in the logs
             var excludedLoggers = new List<string>
@@ -93,7 +92,7 @@ namespace WebApp
                 return true;
             };
 
-            loggerFactory.AddDbLogger(serviceProvider, logFilter, logRepo);
+            loggerFactory.AddDbLogger(serviceProvider, logFilter);
         }
     }
 }
