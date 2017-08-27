@@ -4,6 +4,8 @@ All of these samples are intended as something you could copy and use to start y
 
 To get the big picture of what cloudscribe provides for you see the [Introduction](https://www.cloudscribe.com/docs/introduction) and [Documentation](https://www.cloudscribe.com/docs) at [cloudscribe.com](https://www.cloudscribe.com/)
 
+This repository is for ASP.NET Core 2.0 starter kits, if you need starter kits for ASP.NET Core 1.x see https://github.com/joeaudette/cloudscribe.StarterKits.netcore1
+
 ## [SimpleContent with SimpleAuth and NoDb - Single Tenant](https://github.com/joeaudette/cloudscribe.StarterKits/tree/master/SimpleContent-SimpleAuth-nodb)
 
 ## [SimpleContent with SimpleAuth and NoDb - Multi-Tenant](https://github.com/joeaudette/cloudscribe.StarterKits/tree/master/SimpleContent-SimpleAuth-nodb-multitenant)

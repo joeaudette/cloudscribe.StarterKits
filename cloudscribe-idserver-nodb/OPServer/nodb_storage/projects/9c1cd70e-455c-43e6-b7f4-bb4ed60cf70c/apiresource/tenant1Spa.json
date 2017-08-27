@@ -1,0 +1,1 @@
+{"ApiSecrets":[],"Scopes":[{"Name":"tenant1Spa","DisplayName":null,"Description":null,"Required":false,"Emphasize":false,"ShowInDiscoveryDocument":true,"UserClaims":[]}],"Enabled":true,"Name":"tenant1Spa","DisplayName":"tenant1Spa","Description":"tenant1Spa","UserClaims":["role"]}
