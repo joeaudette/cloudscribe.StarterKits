@@ -26,18 +26,18 @@ Now you can open a browser at http://localhost:50405 for the first OP Tenant and
 
 In each of those tenants there is a pre-configured admin user with the credentials admin@admin.com and password:$Secret12345
 
-Once you login an Administration menu item will appear, take a look around to see the management UI, especially take a look under Administration > Security Settings > Clients, and under Administration > Security Settings > Api Clients
+Once you login an Administration menu item will appear, take a look around to see the management UI, especially take a look under Administration > Security Settings for the sections for Api Resources, Api Clients, and Identity Resources which provide the UI for configuring Identity Server.
 
-Notice that from the first tenent you can browse to Site List and clikc on the second tenant manage button and then you can manage the data for that tenenat as well.
+Notice that from the first tenent you can browse to Site List and click on the second tenant manage button and then you can manage the data for that tenenat as well.
 You can also login directly to the second tenant to manage its data and you will see that it cannnot manage any other tenant data.
 
-Before testing the Js Clients you should probably log out of the OP Server or you could use a different browser, the point is to see that you can login from the Js Client so you don't want to be already logged in when you try it.
+Before testing the clients you should probably log out of the OP Server or you could use a different browser, the point is to see that you can login from the client so you don't want to be already logged in when you try it, or use different web browsers for each one.
 
-The Tenant 1 Js Client is at http://localhost:5005
+The Tenant1SpaPolymer client is at http://localhost:5010
 
-The Tenant 1 Html/PolymerJs Client is at http://localhost:5010  (This is a fancier more realsitic client example using polymer web components)
+The Tenant2SpPolyment client is at http://localhost:5011
 
-The Tenant 2 Js Client is at http://localhost:5007
+
 
 ##### Screenshots
 
