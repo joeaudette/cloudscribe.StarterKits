@@ -24,26 +24,22 @@ build_script:
   - cd cloudscribe-core-nodb
   - dotnet restore
   - dotnet build -c Release
-#  - cd../
-#  - cd cloudscribe-idserver-ef
-#  - cd netcore1
-#  - dotnet restore
-#  - dotnet build -c Release
-#  - cd../
-#  - cd cloudscribe-idserver-ef-mysql
-#  - cd netcore1
-#  - dotnet restore
-#  - dotnet build -c Release
-#  - cd../
-#  - cd cloudscribe-idserver-ef-pgsql
-#  - cd netcore1
-#  - dotnet restore
-#  - dotnet build -c Release
-#  - cd../
-#  - cd cloudscribe-idserver-nodb
-#  - cd netcore1
-#  - dotnet restore
-#  - dotnet build -c Release
+  - cd../
+  - cd cloudscribe-idserver-ef
+  - dotnet restore
+  - dotnet build -c Release
+  - cd../
+  - cd cloudscribe-idserver-ef-mysql
+  - dotnet restore
+  - dotnet build -c Release
+  - cd../
+  - cd cloudscribe-idserver-ef-pgsql
+  - dotnet restore
+  - dotnet build -c Release
+  - cd../
+  - cd cloudscribe-idserver-nodb
+  - dotnet restore
+  - dotnet build -c Release
   - cd../
   - cd SimpleContent-cloudscribecore-ef
   - dotnet restore
