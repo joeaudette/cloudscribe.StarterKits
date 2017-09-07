@@ -12,10 +12,7 @@ namespace WebApp
         public static void Main(string[] args)
         {
             var host = BuildWebHost(args);
-            var loggerFactory = host.Services.GetRequiredService<ILoggerFactory>();
-            var env = host.Services.GetRequiredService<IHostingEnvironment>();
-            ConfigureLogging(env, loggerFactory, host.Services);
-
+ 
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
@@ -23,7 +20,6 @@ namespace WebApp
                 try
                 {
                     EnsureDataStorageIsReady(services);
-
                 }
                 catch (Exception ex)
                 {
@@ -31,6 +27,10 @@ namespace WebApp
                     logger.LogError(ex, "An error occurred while migrating the database.");
                 }
             }
+
+            var env = host.Services.GetRequiredService<IHostingEnvironment>();
+            var loggerFactory = host.Services.GetRequiredService<ILoggerFactory>();
+            ConfigureLogging(env, loggerFactory, host.Services);
 
             host.Run();
         }
