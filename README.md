@@ -1,5 +1,14 @@
 # cloudscribe.StarterKits
 
+The Starter Kits in this repository were the first approach we came up with to help people get started using cloudscribe by showing the various ways it can be configured depending on which features you want and which data storage platform you prefer.
+
+While these Starter Kits are still maintained and are useful as references when you want to integrate cloudscribe libraries into existing applications, we now have much better ways to start new projects including a project template for the dotnet new command and a project template extension for Visual Studio 2017. See the [Introduction](https://www.cloudscribe.com/docs/introduction) to learn about our new project templates. Using our new project templates you can basically generate projects in the various configurations that correspond to the starter kits just by using paramaters supported by the project templates.
+
+Feel free to ask questions in our gitter chat web page:
+
+[![Join the chat at https://gitter.im/joeaudette/cloudscribe](https://badges.gitter.im/joeaudette/cloudscribe.svg)](https://gitter.im/joeaudette/cloudscribe?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+
 All of these samples are intended as something you could copy and use to start your own ASP.NET Core project in Visual Studio 2017. The WebApp in each solution is yours to customize and add your own custom functionality. There is no "cloudscribe" source code in the samples they only have NuGet dependencies on cloudscribe libraries and they have been configured with example Startup.cs code to get things working.
 
 To get the big picture of what cloudscribe provides for you see the [Introduction](https://www.cloudscribe.com/docs/introduction) and [Documentation](https://www.cloudscribe.com/docs) at [cloudscribe.com](https://www.cloudscribe.com/)
