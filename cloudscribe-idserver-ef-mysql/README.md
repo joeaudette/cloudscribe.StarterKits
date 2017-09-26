@@ -1,3 +1,7 @@
+## Use of this StarterKit is Deprecated
+It is now possible to create a project with the same configuration as this StarterKit using our new project template for Visual Studio or the .NET CLI, as explained in the [Introduction](https://www.cloudscribe.com/docs/introduction)
+With the new project template there are even more configurable options. This StarterKit is still maintained as a reference but it is much better to start new projects with the project template.
+
 # Using cloudscribe Core with IdentityServer4 and Entity Framework Core - MySql
 
 cloudscribe Core and IdentityServer4 integration provides a compelling solution that makes it easy to provision new OP (OpenId Connect Provider) Servers each with their own Users, Roles, Claims, Clients, and Scopes. It includes a UI for managing all the needed data including role and claim assignments for users.
