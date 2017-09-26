@@ -1,3 +1,7 @@
+## This StarterKit is meant only as a Reference
+The main goal of this StarterKit is to provide an example with working clients as explained below. It is not intended to use as a basis for starting a new project. I would not recommend using NoDb storage for a real production IdentityServer installation.
+To create new projects, it is now recommended to use our new project template for Visual Studio or the .NET CLI, as explained in the [Introduction](https://www.cloudscribe.com/docs/introduction)
+
 # Using cloudscribe Core with IdentityServer4 and NoDb 
 
 cloudscribe Core and IdentityServer4 integration provides a compelling solution that makes it easy to provision new OP (OpenId Connect Provider) Servers each with their own Users, Roles, Claims, Clients, and Scopes. It includes a UI for managing all the needed data including role and claim assignments for users.
