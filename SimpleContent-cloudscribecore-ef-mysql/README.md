@@ -1,8 +1,8 @@
-# Using SimpleContent with cloudscribe Core and Entity Framework Core - MySql
-
 ## Use of this StarterKit is Deprecated
 It is now possible to create a project with the same configuration as this StarterKit using our new project template for Visual Studio or the .NET CLI, as explained in the [Introduction](https://www.cloudscribe.com/docs/introduction)
 With the new project template there are even more configurable options. This StarterKit is still maintained as a reference but it is much better to start new projects with the project template.
+
+# Using SimpleContent with cloudscribe Core and Entity Framework Core - MySql
 
 [SimpleContent](https://github.com/joeaudette/cloudscribe.SimpleContent) is a simple, yet flexible content and blog engine for ASP.NET Core.
 
