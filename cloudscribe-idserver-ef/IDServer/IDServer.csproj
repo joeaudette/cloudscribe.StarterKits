@@ -34,8 +34,8 @@
     <PackageReference Include="cloudscribe.Logging.Web" Version="2.1.*" />
     <PackageReference Include="cloudscribe.Web.Localization" Version="2.0.*" />
 
-    <PackageReference Include="cloudscribe.Core.IdentityServerIntegration.Mvc" Version="2.0.0-*" />
-    <PackageReference Include="cloudscribe.Core.IdentityServer.EFCore.MSSQL" Version="2.0.0-*" />
+    <PackageReference Include="cloudscribe.Core.IdentityServerIntegration.Mvc" Version="2.1.*" />
+    <PackageReference Include="cloudscribe.Core.IdentityServer.EFCore.MSSQL" Version="2.1.*" />
   
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.*" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.*" PrivateAssets="All" />

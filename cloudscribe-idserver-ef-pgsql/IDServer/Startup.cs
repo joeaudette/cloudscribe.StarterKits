@@ -50,9 +50,9 @@ namespace IDServer
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddCloudscribeCoreEFStoragePostgreSql(connectionString);
             services.AddCloudscribeLoggingEFStoragePostgreSql(connectionString);
-            services.AddIdentityServer()
+            services.AddIdentityServerConfiguredForCloudscribe()
                 .AddCloudscribeCoreEFIdentityServerStoragePostgreSql(connectionString)
-                .AddCloudscribeIdentityServerIntegration()
+                .AddCloudscribeIdentityServerIntegrationMvc()
                 // https://identityserver4.readthedocs.io/en/dev/topics/crypto.html
                 //.AddSigningCredential(cert) // create a certificate for use in production
                 .AddDeveloperSigningCredential() // don't use this for production
@@ -60,7 +60,7 @@ namespace IDServer
 
 
             services.AddCloudscribeLogging();
-            services.AddCloudscribeCore(Configuration);
+            services.AddCloudscribeCoreMvc(Configuration);
 
             // optional but recommended if you need localization 
             // uncomment to use cloudscribe.Web.localization https://github.com/joeaudette/cloudscribe.Web.Localization

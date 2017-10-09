@@ -53,12 +53,12 @@ namespace OPServer
             services.AddCloudscribeLoggingNoDbStorage(Configuration);
             services.AddCloudscribeLogging();
 
-            services.AddCloudscribeCore(Configuration);
+            services.AddCloudscribeCoreMvc(Configuration);
 
             //var cert = new X509Certificate2(Path.Combine(environment.ContentRootPath, "yourcustomcert.pfx"), "");
-            services.AddIdentityServer()
+            services.AddIdentityServerConfiguredForCloudscribe()
                         .AddCloudscribeCoreNoDbIdentityServerStorage()
-                        .AddCloudscribeIdentityServerIntegration()
+                        .AddCloudscribeIdentityServerIntegrationMvc()
                         // https://identityserver4.readthedocs.io/en/dev/topics/crypto.html
                         //.AddSigningCredential(cert) // create a certificate for use in production
                         .AddDeveloperSigningCredential() // don't use this for production
