@@ -62,7 +62,6 @@ This sample uses [cloudscribe Core](https://github.com/joeaudette/cloudscribe) f
 
 [NoDb](https://github.com/joeaudette/NoDb) is a "No Database" file system storage, it is also a "NoSql" storage system.
 
-This sample is using a fork of [IdentityServer4](https://github.com/joeaudette/IdentityServer4) with minimal changes that were needed to support folder tenants of the OP Server. I am hoping to get changes into the main IdentityServer4 to support this scenario, this fork is hopefully a temporary solution.
 
 ### Publishing
 
