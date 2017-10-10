@@ -19,10 +19,5 @@ This sample uses [cloudscribe Core](https://github.com/joeaudette/cloudscribe) f
 
 [cloudscribe Core](https://github.com/joeaudette/cloudscribe) is a multi-tenant web application foundation. It provides multi-tenant identity management for sites, users, and roles.
 
-This sample is using a fork of [IdentityServer4](https://github.com/joeaudette/IdentityServer4) with minimal changes that were needed to support folder tenants of the OP Server. I am hoping to get changes into the main IdentityServer4 to support this scenario, this fork is hopefully a temporary solution.
-
 [![Join the chat at https://gitter.im/joeaudette/cloudscribe](https://badges.gitter.im/joeaudette/cloudscribe.svg)](https://gitter.im/joeaudette/cloudscribe?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-
-
 
