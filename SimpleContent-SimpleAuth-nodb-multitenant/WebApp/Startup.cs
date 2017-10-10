@@ -70,7 +70,7 @@ namespace WebApp
             services.AddScoped<IProjectSecurityResolver, cloudscribe.SimpleContent.Security.SimpleAuth.ProjectSecurityResolver>();
 
             services.AddCloudscribeCommmon(Configuration);
-            services.AddSimpleContent();
+            services.AddSimpleContentMvc();
             services.AddMetaWeblogForSimpleContent(Configuration.GetSection("MetaWeblogApiOptions"));
             services.AddSimpleContentRssSyndiction();
             services.AddCloudscribeFileManager(Configuration);

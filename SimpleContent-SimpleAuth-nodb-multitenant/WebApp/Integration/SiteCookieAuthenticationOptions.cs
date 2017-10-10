@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Primitives;
 using System;
 using System.Collections.Generic;
 
@@ -21,6 +22,18 @@ namespace WebApp.Integration
             _cookieOptionsInitializer = cookieOptionsInitializer;
             _httpContextAccessor = httpContextAccessor;
             _log = logger;
+			
+			_factory = factory;
+            _sources = sources;
+            _cache = cache;
+
+            foreach (var source in _sources)
+            {
+                ChangeToken.OnChange<string>(
+                    () => source.GetChangeToken(),
+                    (name) => InvokeChanged(name),
+                    source.Name);
+            }
         }
 
         private IPostConfigureOptions<CookieAuthenticationOptions> _cookieOptionsInitializer;
