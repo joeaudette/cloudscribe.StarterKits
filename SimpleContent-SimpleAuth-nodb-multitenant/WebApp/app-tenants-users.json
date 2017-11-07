@@ -4,11 +4,13 @@
             {
                 "UniqueKey": "tenant1",
                 "SiteName": "SimpleContent Demo",
-                "Hostnames": [
-                    "localhost:50000",
-                    "localhost:52472",
-                    "tenant1.local:50000"
-                ],
+              "Hostnames": [
+                "localhost:50000",
+                "localhost:6139",
+                "localhost:6140",
+                "localhost:52472",
+                "tenant1.local:50000"
+              ],
                 "Theme": "default",
                 "ContentProjectId": "project1",
                 "EnablePasswordHasherUi": "true",

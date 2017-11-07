@@ -33,8 +33,7 @@ namespace WebApp
             ConfigureAuthPolicy(services);
 
 
-            // add users and settings from simpleauth-settings.json
-            services.Configure<cloudscribe.Web.SimpleAuth.Models.SimpleAuthSettings>(Configuration.GetSection("SimpleAuthSettings"));
+            // add users and settings from app-tenants-users.json
             services.Configure<MultiTenancyOptions>(Configuration.GetSection("MultiTenancy"));
 
             services.AddMultitenancy<SiteSettings, CachingSiteResolver>();
