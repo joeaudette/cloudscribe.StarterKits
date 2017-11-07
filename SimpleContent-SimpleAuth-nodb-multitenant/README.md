@@ -15,11 +15,11 @@ If you have questions or just want to be social, say hello in our gitter chat ro
 
 ## Prerequisites
 
-[Visual Studio 2017](https://www.visualstudio.com/en-us/downloads) or VSCode and [ASP.NET Core 1.1.x](https://dot.net/)
+[Visual Studio 2017](https://www.visualstudio.com/en-us/downloads) or VSCode and [ASP.NET Core 2.x](https://dot.net/)
 
 ## Running the Sample simpleauthnodb.sln
 
-If you launch it in Visual Studio with IIS Express it will have a single tenant running at localhost:52472. You can also run it with 2 tenants enabled. You can also run both configured tenants by opening a command window in the root of the WebApp project and execute the command:
+If you launch it in Visual Studio with IIS Express it will have a single tenant running at localhost:6139. You can also run it with 2 tenants enabled. You can also run both configured tenants by opening a command window in the root of the WebApp project and execute the command:
 
     dotnet run
 	
