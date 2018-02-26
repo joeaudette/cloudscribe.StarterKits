@@ -172,6 +172,13 @@ namespace WebApp
 
             services.AddAuthorization(options =>
             {
+                options.AddPolicy("BlogViewPolicy", policy =>
+                policy.RequireAssertion(context =>
+                {
+                    return true; //allow anonymous
+                })
+                );
+
                 // this policy currently means any user with a blogId claim can edit
                 // would require somthing more for multi tenant blogs
                 options.AddPolicy(
