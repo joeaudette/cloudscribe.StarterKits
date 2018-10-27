@@ -1,4 +1,10 @@
-# cloudscribe.StarterKits
+# cloudscribe.StarterKits - Deprecated, please use our project template instead
+
+https://marketplace.visualstudio.com/items?itemName=joeaudette.cloudscribeProjectTemplate
+or
+dotnet new -i "cloudscribe.templates::*"
+
+## Legacy info below
 
 The Starter Kits in this repository were the first approach we came up with to help people get started using cloudscribe by showing the various ways it can be configured depending on which features you want and which data storage platform you prefer.
 
