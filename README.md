@@ -1,8 +1,10 @@
 # cloudscribe.StarterKits - Deprecated, please use our project template instead
 
 https://marketplace.visualstudio.com/items?itemName=joeaudette.cloudscribeProjectTemplate
+
 or
-dotnet new -i "cloudscribe.templates::*"
+
+    dotnet new -i "cloudscribe.templates::*"
 
 ## Legacy info below
 
